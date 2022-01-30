@@ -6,7 +6,7 @@
     height: calc(100vh - $header-height - 20px);
     background-color: #646464b8;
     box-shadow: 1px 1px 8px 0px #858585;
-    z-index: 1;
+    z-index: 3;
 
     @include for-tablet-layout {
         width: $sidebar-tablet-width;

@@ -59,6 +59,7 @@
    &.media-800:not(.media-600){
       .layout-container{
          justify-content: unset;
+         
          &>*:nth-child(odd){
             margin-left: auto;
          }
@@ -70,6 +71,9 @@
    
    &.media-600{
       .layout-container{
+         gap: 40px;
+         padding-block: 40px !important;
+         
          .card{
             width: unset;
          }
