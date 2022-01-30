@@ -9,9 +9,9 @@ import { wapTemplate_7 } from "../templates/wap/wap-template-7";
 import { wapTemplate_8 } from "../templates/wap/wap-template-8";
 
 const initialState = {
-    // wap: null,
+    wap: null,
     wapHistory: [],
-    wap: wapTemplate_5
+    // wap: wapTemplate_5
 }
 
 
@@ -21,7 +21,7 @@ export function wapReducer(state = initialState, action) {
 
     switch (action.type) {
         case 'SET_WAP':
-            return newState = { ...state, wap: { ...action.wap } };
+            return newState = { ...state, wap: { ...action.wap }, wapHistory: [] };
         case 'UPDATE_WAP':
             const prevWap = JSON.parse(JSON.stringify(state.wap))
             return newState = { ...state, wap: { ...action.wap }, wapHistory: [...state.wapHistory, prevWap] };

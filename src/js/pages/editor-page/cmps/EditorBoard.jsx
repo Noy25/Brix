@@ -8,6 +8,7 @@ import { isEmpty } from "lodash";
 
 import { DynamicCmp } from './dynamic-cmp/DynamicCmp'
 import { Loader } from '../../../cmps/Loader.jsx'
+import { updateWap } from '../../../store/wap.action';
 
 
 export function EditorBoard({ placeholderProps }) {
@@ -55,12 +56,15 @@ export function EditorBoard({ placeholderProps }) {
       dispatch(setCurrElement(cmp))
    }
 
-   const handleTxtChange = ({ target }) => {
-      const attr = {
-         attrName: 'txt',
-         attrValue: target.innerText
-      }
-      dispatch(updateCurrElementAttr(currElement, attr))
+   const handleTxtChange = ({ target }, element) => {
+      // const attr = {
+      //    attrName: 'txt',
+      //    attrValue: target.innerText
+      // }
+      // dispatch(updateCurrElementAttr(currElement, attr))
+      element.txt = target.innerText;
+      dispatch(updateWap(currElement))
+
    }
 
    const getBoardSize = () => {

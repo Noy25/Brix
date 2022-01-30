@@ -111,6 +111,7 @@ export function resetDraftWap() {
 
 // *** ELEMENT wap actions *** //
 
+
 export function removeElement(element) {
     return (dispatch, getState) => {
         let { wap } = getState().wapModule;
