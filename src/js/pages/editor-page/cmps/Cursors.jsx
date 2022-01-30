@@ -64,7 +64,6 @@ export function Cursors({ wapId }) {
     return <>
         {cursors.length > 0 &&
             cursors.map(cursor => {
-                console.log(cursor.color)
                 return <div
                     key={cursor.id}
                     style={{

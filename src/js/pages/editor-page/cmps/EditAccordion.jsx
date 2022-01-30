@@ -66,17 +66,20 @@ export function EditAccordion() {
             case 'txt':
                 setExpanded('panel1');
                 break;
-            case 'btn':
-                setExpanded('panel1');
-                break;
             case 'img':
                 setExpanded('panel2');
+                break;
+            case 'btn':
+                setExpanded('panel3');
                 break;
             case 'container':
                 setExpanded('panel4');
                 break;
-            case 'input':
+            case 'video':
                 setExpanded('panel6');
+                break;
+            case 'input':
+                setExpanded('panel7');
                 break;
             default:
         }
