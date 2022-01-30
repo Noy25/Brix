@@ -58,8 +58,9 @@ export function Login() {
             nickname: profileObj.givenName
         }
         dispatch(onSignup(googleCredentials));
+        dispatch(shouldShowLogin(false));
     }
-
+    
     const handleGoogleFailure = res => {
         console.log(res);
     }
@@ -68,7 +69,7 @@ export function Login() {
         ev.stopPropagation();
         setIsLogin(false)
     }
-
+    
     const setLogin = (ev) => {
         ev.stopPropagation();
         setIsLogin(true)
