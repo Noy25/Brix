@@ -16,9 +16,9 @@ export function WapTxt(props) {
          onClick={(ev) => onSetCurrElement(ev, cmp)}
          onMouseOut={(ev) => { ev.target.classList.remove('element-hover') }}
          onMouseOver={({ target }) => { target.classList.add('element-hover') }}
+         onBlur={(ev) => handleTxtChange(ev, cmp)}
          contentEditable="true"
          suppressContentEditableWarning={true}
-         onBlur={handleTxtChange}
          spellCheck="false"
       >
          {cmp.txt}

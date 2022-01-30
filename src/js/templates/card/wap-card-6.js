@@ -57,7 +57,7 @@ export const wapCard_6 = {
                      "id": "sd2d2ff11g",
                      "type": "img",
                      "url": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-                     "style": { ...imgStyle }
+                     "style": { ...imgStyle, "width": "250" }
                   },
                ]
             },
@@ -94,7 +94,7 @@ export const wapCard_6 = {
                      "id": "987cw684wc",
                      "type": "img",
                      "url": "https://images.unsplash.com/photo-1596075780750-81249df16d19?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-                     "style": { ...imgStyle }
+                     "style": { ...imgStyle, "width": "250" }
                   },
                ]
             },
@@ -131,7 +131,7 @@ export const wapCard_6 = {
                      "id": "df65dfdf321",
                      "type": "img",
                      "url": "https://images.unsplash.com/photo-1607503873903-c5e95f80d7b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80",
-                     "style": { ...imgStyle }
+                     "style": { ...imgStyle, "width": "250" }
                   },
                ]
             }

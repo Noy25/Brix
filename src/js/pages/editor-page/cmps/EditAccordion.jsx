@@ -38,7 +38,7 @@ export function EditAccordion() {
         setExpanded(newExpanded ? panel : false);
     };
 
-    const currElement = useSelector(state => state.editorModule.currElement)
+    let currElement = useSelector(state => state.editorModule.currElement)
     const currHistoryLength = useSelector(state => state.wapModule.wapHistory.length)
 
     const prevElement = usePrevious(currElement);
@@ -46,7 +46,8 @@ export function EditAccordion() {
 
     useEffect(() => {
         if (currElement?.id === prevElement?.id &&
-            prevHistoryLength === currHistoryLength) {
+            prevHistoryLength <= currHistoryLength) {
+            console.log(currElement.id, prevElement.id);
             dispatch(updateWap(currElement));
         }
         window.addEventListener('keydown', onRemoveElementByKey);
@@ -101,6 +102,7 @@ export function EditAccordion() {
             styleValue: ev.hex
         }
         if (name === 'backgroundColor') {
+            currElement = JSON.parse(JSON.stringify(currElement))
             currElement.style.backgroundImage = '';
         }
         dispatch(updateCurrElementStyle(currElement, style))
