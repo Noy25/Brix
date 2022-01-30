@@ -41,15 +41,21 @@ export const wapTxt_8 = {
                "className": "partners-container flex",
                "cmps": [
                   {
-                     "id": "sdf32135g1hj351g51sdfs",
-                     "type": "img",
-                     "url": "http://res.cloudinary.com/dpmzxdfuh/image/upload/v1643461572/nranuwoe2k8r64p71ldf.png",
-                     "style": { ...imgStyle, "width": "auto" }
-                  },
-                  {
                      "id": "y30uik220vb1n",
                      "type": "img",
                      "url": "http://res.cloudinary.com/dpmzxdfuh/image/upload/v1643461954/hazhostmactmr6fqrkxs.png",
+                     "style": { ...imgStyle, "width": "auto" }
+                  },
+                  {
+                     "id": "sdf32135g1hj351g51sdfs",
+                     "type": "img",
+                     "url": "http://res.cloudinary.com/dpmzxdfuh/image/upload/v1643555475/rl4sqnib7utpnhzftvwb.png",
+                     "style": { ...imgStyle, "width": "auto" }
+                  },
+                  {
+                     "id": "yh61f3ger",
+                     "type": "img",
+                     "url": "http://res.cloudinary.com/dpmzxdfuh/image/upload/v1643461648/dfdrjr6vczl1ndiftysw.png",
                      "style": { ...imgStyle, "width": "auto" }
                   },
                   {
@@ -61,13 +67,7 @@ export const wapTxt_8 = {
                   {
                      "id": "20654jhm651dfsdfdf",
                      "type": "img",
-                     "url": "http://res.cloudinary.com/dpmzxdfuh/image/upload/v1643461632/gdy5hthwblhbqwgwcelu.png",
-                     "style": { ...imgStyle, "width": "auto" }
-                  },
-                  {
-                     "id": "yh61f3ger",
-                     "type": "img",
-                     "url": "http://res.cloudinary.com/dpmzxdfuh/image/upload/v1643461648/dfdrjr6vczl1ndiftysw.png",
+                     "url": "http://res.cloudinary.com/dpmzxdfuh/image/upload/v1643555067/hyghju8sv9w9puypjpwq.png",
                      "style": { ...imgStyle, "width": "auto" }
                   },
                ]

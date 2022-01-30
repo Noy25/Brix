@@ -124,7 +124,7 @@
                 direction: rtl;
                 transform: translateY(0%);
                 transition: all 0.2s;
-                z-index: 1;
+                z-index: 3;
 
                 &.close {
                     transform: translateY(-100%);

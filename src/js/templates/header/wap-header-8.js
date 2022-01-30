@@ -68,20 +68,20 @@ export const wapHeader_8 = {
                         {
                            "id": "ohmtpbfdfghjfcg",
                            "type": "img",
-                           "url": "https://findicons.com/files/icons/2779/simple_icons/256/dribbble.png",
+                           "url": "http://res.cloudinary.com/dpmzxdfuh/image/upload/v1643553563/swxzjazqoj7u0ubx4bvl.png",
                            "style": { ...imgStyle, "width": "32" }
                         },
                         {
                            "id": "68435138",
                            "type": "img",
-                           "url": "https://findicons.com/files/icons/2796/metro_uinvert_dock/256/behance.png",
+                           "url": "http://res.cloudinary.com/dpmzxdfuh/image/upload/v1643554674/fcorv0pc7urntyjlnsjy.png",
                            "style": { ...imgStyle, "width": "32" }
                         },
                         {
                            "id": "j5j44jghj1gh32j",
                            "type": "img",
-                           "url": "https://freeiconshop.com/wp-content/uploads/edd/instagram-new-color-flat.png",
-                           "style": { ...imgStyle, "width": "26" }
+                           "url": "http://res.cloudinary.com/dpmzxdfuh/image/upload/v1643553914/zsfjjag20cnsx5xwj2hr.png",
+                           "style": { ...imgStyle, "width": "32" }
                         },
                         {
                            "id": "df65g63df1g3fg",

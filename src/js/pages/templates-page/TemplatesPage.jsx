@@ -14,8 +14,8 @@ export function TemplatesPage() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        window.scrollTo(0,0)
-    },[])
+        window.scrollTo(0, 0)
+    }, [])
 
     const wapTemplates = templateService.getWapTemplates();
 
@@ -35,7 +35,7 @@ export function TemplatesPage() {
                             <img src={altImg} alt="" />
                         </div>
                     </div>
-                    <p>New Project</p>
+                    <p>+ Create New Website</p>
                 </Link>
 
                 {wapTemplates.map((wapTemplate, idx) => {
