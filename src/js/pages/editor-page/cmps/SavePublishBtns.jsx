@@ -21,7 +21,27 @@ export function SavePublishBtns() {
    const { user } = useSelector(state => state.userModule);
    const { isUserModalShown } = useSelector(state => state.systemModule);
 
+   const save = async () => {
+      dispatch(shouldShowUserModal(false));
+      setShouldShowLoader(true);
+      const editorBoard = document.querySelector('.editor-board');
+      wap.thumbnail = await createJpegFromElement(editorBoard, editorBoard.clientWidth, (editorBoard.clientWidth * 0.7));
+      dispatch(saveWap());
+      setShouldShowLoader(false);
+      dispatch(setUserMsg({ type: 'success', txt: 'Saved to your Collection !', timer: 5000 }));
+   }
 
+   const saveNew = (ev, inputsValues) => {
+      ev.preventDefault();
+      const { websiteName } = inputsValues;
+
+      if (!websiteName) return;
+
+      wap.name = websiteName;
+      if (wap._id) delete wap._id;
+
+      save();
+   }
 
    const onSaveWap = () => {
       if (!user) {
@@ -55,38 +75,16 @@ export function SavePublishBtns() {
 
    const handleNameWebsite = () => {
       setUserModalProps({
-         mainTxt: 'Save',
-         subTxt: 'Choose a name for you website',
+         mainTxt: 'Save your Website',
+         subTxt: 'Choose a name for your website (can be changed later)',
          type: 'form',
          btnSubmitTxt: 'Confirm',
          handleSubmitCb: saveNew,
          inputType_1: 'text',
          inputName_1: 'websiteName',
-         inputPlaceholder_1: 'Enter your text here',
+         inputPlaceholder_1: 'example: "Square Online"',
          handleCbCancel: () => dispatch(shouldShowUserModal(false))
       })
-   }
-
-   const saveNew = (ev, inputsValues) => {
-      ev.preventDefault();
-      const { websiteName } = inputsValues;
-
-      if (!websiteName) return;
-
-      wap.name = websiteName;
-      if (wap._id) delete wap._id;
-
-      save();
-   }
-
-   const save = async () => {
-      dispatch(shouldShowUserModal(false));
-      setShouldShowLoader(true);
-      const editorBoard = document.querySelector('.editor-board');
-      wap.thumbnail = await createJpegFromElement(editorBoard, editorBoard.clientWidth, (editorBoard.clientWidth * 0.7));
-      dispatch(saveWap());
-      setShouldShowLoader(false);
-      dispatch(setUserMsg({ type: 'success', txt: 'Saved!', timer: 5000 }));
    }
 
    const onPublish = () => {

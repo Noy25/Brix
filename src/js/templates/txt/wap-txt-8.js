@@ -1,12 +1,12 @@
 import { txtStyle, btnStyle, imgStyle, containerStyle } from '../default-styles';
 
 export const wapTxt_8 = {
-   "id": "asdhjfj4857hfh",
+   "id": "34l6jelktjaslkdfgjl2k345jtl",
    "type": "container",
    "category": "wap-text",
    "className": "wap-txt-8",
    "thumbnail": "http://res.cloudinary.com/dpmzxdfuh/image/upload/v1643475725/yt6fda5escoliduc6q9t.png",
-   "style": { ...containerStyle, "backgroundImage": "url(http://res.cloudinary.com/dpmzxdfuh/image/upload/v1643383314/nmekmg82km01edubwg0f.svg)", "backgroundColor": "#0b0b0b", "paddingInline": "0" },
+   "style": { ...containerStyle, "backgroundColor": "#0b0b0b", "paddingInline": "0", "paddingBlock": "150", "backgroundImage": "url(http://res.cloudinary.com/dpmzxdfuh/image/upload/v1643383314/nmekmg82km01edubwg0f.svg)" },
    "cmps": [
       {
          "id": "dcf519s9ds",

@@ -41,7 +41,6 @@ export function updateWap(elementToUpdate) {
         let { wap } = getState().wapModule;
         wap = JSON.parse(JSON.stringify(wap));
         wapService.findTarget(wap, elementToUpdate.id, (cmpsArr, idx) => cmpsArr[idx] = elementToUpdate);
-        console.log(wap);
         draftService.saveDraft(wap);
 
         if (wap.id) socketService.emit('update-wap', wap);
