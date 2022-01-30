@@ -9,7 +9,7 @@ export function WapBuildingLoader() {
         <Screen>
             <div className="save-loader-container">
                 <Loader color={'#ffffff'} />
-                <h1>Please wait a few moments...</h1>
+                <h1>We Are Working On Your Website...</h1>
             </div>
         </Screen>
     )
