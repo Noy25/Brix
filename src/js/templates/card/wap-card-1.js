@@ -13,7 +13,7 @@ export const wapCard_1 = {
             "id": "asdjnadddshd8787tyas",
             "type": "img", // CARD IMG (LEFT)
             "url": "https://images.pexels.com/photos/2404370/pexels-photo-2404370.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-            "style": { ...imgStyle, "borderRadius": "10", "width": "100" }
+            "style": { ...imgStyle, "borderRadius": "10", "width": "570" }
         },
         {
             "id": "ashduiahsasdnasSS6",

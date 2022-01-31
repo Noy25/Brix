@@ -37,6 +37,7 @@ export const wapHeader_1 =
                     "type": "btn",
                     "url": "https://www.google.com",
                     "txt": "More details",
+                    "className": "nav-link",
                     "style": {
                         ...btnStyle,
                         "color": "#ffffff",
@@ -50,6 +51,7 @@ export const wapHeader_1 =
                     "type": "btn",
                     "url": "https://www.google.com",
                     "txt": "Reservations",
+                    "className": "nav-link",
                     "style": {
                         ...btnStyle,
                         "color": "#ffffff",
@@ -63,12 +65,22 @@ export const wapHeader_1 =
                     "type": "btn",
                     "url": "https://www.google.com",
                     "txt": "Contact us",
+                    "className": "nav-link",
                     "style": {
                         ...btnStyle,
                         "color": "#ffffff",
                         "fontFamily": "bitter",
                         "backgroundColor": "#1d375a"
                     },
+
+                },
+                {
+                    "id": "dhjfgctdyshdg",
+                    "type": "btn",
+                    "url": "https://www.google.com",
+                    "className": "wap-1-hamburger",
+                    "txt": "☰",
+                    "style": { ...btnStyle, "color": "#ffffff", "backgroundColor": "#1D375A" }
 
                 },
             ]

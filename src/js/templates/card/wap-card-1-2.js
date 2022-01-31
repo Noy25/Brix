@@ -36,6 +36,6 @@ export const wapCard_1_2 = {
             "id": "adlgkjaswdlkj346asdddsssD3d",
             "type": "img", // CARD IMG (RIGHT)
             "url": "https://images.pexels.com/photos/2317904/pexels-photo-2317904.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-            "style": { ...imgStyle, "borderRadius": "10", "width": "100" }
+            "style": { ...imgStyle, "borderRadius": "10", "width": "570" }
         }]
 }
