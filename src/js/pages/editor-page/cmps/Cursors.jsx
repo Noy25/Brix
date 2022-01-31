@@ -60,19 +60,31 @@ export function Cursors({ wapId }) {
         setCursors(filteredCursors);
     }
 
-
+    
     return <>
         {cursors.length > 0 &&
             cursors.map(cursor => {
                 return <div
                     key={cursor.id}
                     style={{
-                        position: 'fixed',
+                        position: "fixed",
                         top: cursor.pos.y,
                         left: cursor.pos.x,
-                        zIndex: '9999',
-                        transform: 'rotate(280deg)'
-                    }}><BsCursorFill fill={cursor.color} fontSize={'1.5rem'} />
+                        zIndex: "9999",
+                    }}><div style={{ transform:"rotate(-80deg)" }}><BsCursorFill fill={cursor.color} fontSize="1.5rem" /></div>
+                    <span
+                        style={{
+                            display: "block",
+                            position: "absolute",
+                            left: "15px",
+                            top: "20px",
+                            backgroundColor: cursor.color,
+                            color: "white",
+                            padding: "2px 5px",
+                            borderRadius: "5px",
+                            opacity: ".8"
+                        }}
+                    >{cursor.nickname}</span>
                 </div>
             })}
     </>

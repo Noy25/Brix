@@ -3,7 +3,9 @@ import { draftService } from '../services/draft.service.js';
 import { templateService } from '../services/template.service.js';
 import { utilService } from '../services/util.service.js';
 import { socketService } from '../services/socket.service.js';
+
 import { loadingStart, loadingDone } from './system.action'
+
 
 
 // *** KEY NOTES *** //
@@ -65,11 +67,14 @@ export function saveWap(cb) {
 export function createRoom(redirect) {
     return (dispatch, getState) => {
         const { wap } = getState().wapModule;
+        let { user } = getState().userModule;
+
         wap.id = utilService.getRandomId();
+        let nickname = user ? user.nickname : 'Guest';
 
         draftService.saveDraft(wap);
         dispatch({ type: 'SET_WAP', wap });
-        socketService.emit('create-room', wap);
+        socketService.emit('create-room', { wap, nickname });
         navigator.clipboard.writeText(`localhost:3000/editor/${wap.id}`); // DONT FORGET TO CHANGE LOCALHOST ON BUILD
         redirect(wap.id);
     }
@@ -77,7 +82,10 @@ export function createRoom(redirect) {
 
 export function joinRoom(wapId) {
     return (dispatch, getState) => {
-        socketService.emit('join-room', wapId);
+        let { user } = getState().userModule;
+        let nickname = user ? user.nickname : 'Guest';
+
+        socketService.emit('join-room', { wapId, nickname });
         socketService.on('load-wap', wap => {
             draftService.saveDraft(wap);
             dispatch({ type: 'SET_WAP', wap });
