@@ -78,7 +78,7 @@ export const wapTxt_8 = {
                "type": "btn",
                "url": "https://www.google.com",
                "txt": "GET IN TOUCH",
-               "style": { ...btnStyle, "borderRadius": "100" }
+               "style": { ...btnStyle, "borderRadius": "8" }
             }
          ]
       }

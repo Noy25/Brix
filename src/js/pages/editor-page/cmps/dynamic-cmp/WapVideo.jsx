@@ -12,6 +12,7 @@ export function WapVideo(props) {
 
    return <span>
       <iframe title="Video" width={cmp.width || '400'} style={style}
+         allowFullScreen
          onClick={(ev) => onSetCurrElement(ev, cmp)}
          className={`${cmp.id === currElementId ? 'edit-active' : ''} ${cmp.className || ''}`}
          src={cmp.url}>

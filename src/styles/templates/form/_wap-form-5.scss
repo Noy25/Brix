@@ -37,4 +37,19 @@
          }
       }
    }
+
+   &.media-1200{
+      iframe {
+         width: 530px;
+      }
+   }
+   
+   &.media-1000{
+      // iframe {
+      //    width: 450px;
+      // }
+      .inner-container {
+         flex-direction: column;
+      }
+   }
 }

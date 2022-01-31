@@ -9,7 +9,7 @@ export const wapSection_4_4 = {
     "thumbnail": "http://res.cloudinary.com/dpmzxdfuh/image/upload/v1643279376/zsos13ax61stlolysdil.jpg",
     "style": {
         ...containerStyle,
-        "paddingInline": "0",
+        "paddingInline": "40",
         "paddingBlock": "0"
     },
     "cmps": [

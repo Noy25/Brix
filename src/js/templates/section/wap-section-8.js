@@ -5,7 +5,8 @@ export const wapSection_8 = {
    "type": "container",
    "category": "wap-section",
    "className": "wap-section-8 flex column",
-   "thumbnail": "http://res.cloudinary.com/dpmzxdfuh/image/upload/v1643475880/t2rb9onq8q3fjg7ruw0y.png",
+   // "thumbnail": "http://res.cloudinary.com/dpmzxdfuh/image/upload/v1643475880/t2rb9onq8q3fjg7ruw0y.png",
+   "thumbnail": "http://res.cloudinary.com/dpmzxdfuh/image/upload/v1643670927/pjqcicdpnfoq7lr0umyz.png",
    "style": { ...containerStyle, "paddingInline": "0", },
    "cmps": [
       {
@@ -15,10 +16,11 @@ export const wapSection_8 = {
          "className": "layout-container flex",
          "cmps": [
             //Img (left)
+            // https://yourcryptolibrary.com/wp-content/uploads/2021/11/coins-crypto.png
             {
                "id": "S1DF6565FG1H6DFGH",
                "type": "img",
-               "url": "https://yourcryptolibrary.com/wp-content/uploads/2021/11/coins-crypto.png",
+               "url": "http://res.cloudinary.com/dpmzxdfuh/image/upload/v1643664750/vy7pdf83k5liwqunpbca.png",
                "style": { ...imgStyle, "width": "460" }
             },
             //Content (right)
@@ -37,7 +39,7 @@ export const wapSection_8 = {
                   {
                      "id": "BA11B65B",
                      "type": "txt",
-                     "txt": "The Future of Finance is Here",
+                     "txt": "Crypto is the future",
                      "style": { ...txtStyle, "fontFamily": "montserrat", "fontWeight": "700", "fontSize": "40", "color": "#f6f6f6" }
                   },
                   //Buttons container
@@ -51,7 +53,7 @@ export const wapSection_8 = {
                            "id": "684sdf68df684gvdf68v",
                            "type": "btn",
                            "url": "https://www.google.com",
-                           "txt": "Order now",
+                           "txt": "Purchase now",
                            "className": "cta",
                            "style": { ...btnStyle, "borderRadius": "10", "color": "#1d1654" }
                         },

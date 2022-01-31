@@ -30,11 +30,11 @@ export function TemplatesPage() {
             <section className="templates-grid">
 
                 <Link to="/editor" className="wrapper flex column" onClick={() => dispatch(resetDraftWap())}>
-                    <div className="new-proj">
-                        <div className="image-container new">
-                            <img src={altImg} alt="" />
-                        </div>
+                    {/* <div className="new-proj"> */}
+                    <div className="image-container new-proj">
+                        <img src={altImg} alt="" />
                     </div>
+                    {/* </div> */}
                     <p>+ Create New Website</p>
                 </Link>
 

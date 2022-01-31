@@ -1,16 +1,24 @@
 // *** Rephrased for demo purposes *** //
 
+import { draftService } from "./services/draft.service";
+import { socketService } from "./services/socket.service";
+import { wapService } from "./services/wap.service";
+
+
+
 // Main
-function findTarget(website, elementId, callbackFn) {
-    if (!website.cmps) return;
-    const elementIndex = website.cmps.findIndex(cmp => cmp.id === elementId);
+function findTarget(webApp, elementId, cb) {
+    if (!webApp.cmps) return;
+    const elementIndex = webApp.cmps.findIndex(cmp => cmp.id === elementId);
     if (elementIndex > -1) {
-        callbackFn(website.cmps, elementIndex);
+        cb(webApp.cmps, elementIndex);
         return;
     } else {
-        website.cmps.forEach(cmp => findTarget(cmp, elementId, callbackFn));
+        webApp.cmps.forEach(cmp => findTarget(cmp, elementId, cb));
     }
 }
+
+
 
 
 // Example 1
@@ -28,6 +36,9 @@ export function removeElement(element) {
         dispatch({ type: 'UPDATE_WAP', wap });
     }
 }
+
+
+
 
 // Example 2
 export function duplicateElement(element) {

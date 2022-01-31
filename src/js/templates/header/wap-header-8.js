@@ -53,7 +53,7 @@ export const wapHeader_8 = {
                            "id": "d35df35fdf",
                            "type": "btn",
                            "url": "#",
-                           "txt": "PORTFOLIO",
+                           "txt": "CLIENTS",
                            "style": { ...btnStyle, "backgroundColor": "#ffffff00", "color": "#fcfcfc", "color": "#fcfcfc" }
                         }
                      ]

@@ -8,17 +8,17 @@ export const wapFooter_4 =
     "category": "wap-footer",
     "className": "wap-footer-4",
     "thumbnail": "http://res.cloudinary.com/dpmzxdfuh/image/upload/v1643279893/laeppmj9nxiq9eao6ihu.jpg",
-    "style": { ...containerStyle, "paddingInline": "30", "paddingBlock": "40", "backgroundColor": "#6f4e37" },
+    "style": { ...containerStyle, "paddingInline": "30", "paddingBlock": "40", "backgroundColor": "#653621" },
     "cmps": [
         {
             "id": "lssdfdhjsdkfjdh",
             "type": "container",
-            "style": { ...containerStyle, "paddingBlock": "0", "backgroundColor": "#6f4e37" },
+            "style": { ...containerStyle, "paddingBlock": "0", "backgroundColor": "transparent" },
             "cmps": [
                 {
                     "id": "123321123321123321gggHGgGfd",
                     "type": "container",
-                    "style": { ...containerStyle, "paddingBlock": "0", "backgroundColor": "#6f4e37" },
+                    "style": { ...containerStyle, "paddingBlock": "0", "backgroundColor": "transparent" },
                     "cmps": [
                         {
                             "id": "psdfghgsdfsdfjsdlkxvnm,xcvpoppoikqqq",
@@ -55,7 +55,7 @@ export const wapFooter_4 =
                 {
                     "id": "fgahdttttGfkdsflk",
                     "type": "container",
-                    "style": { ...containerStyle, "paddingBlock": "0", "backgroundColor": "#6f4e37" },
+                    "style": { ...containerStyle, "paddingBlock": "0", "backgroundColor": "transparent" },
                     "cmps": [
                         {
                             "id": "ee66d7fjgDdjfhsjd",
@@ -81,7 +81,7 @@ export const wapFooter_4 =
                     "id": "yabadadbdo12398",
                     "type": "container",
                     "className": "input-container flex column",
-                    "style": { ...containerStyle, "paddingBlock": "0", "backgroundColor": "#6f4e37" },
+                    "style": { ...containerStyle, "paddingBlock": "0", "backgroundColor": "transparent" },
                     "cmps": [
                         {
                             "id": "aasghjfasasd131234564",
@@ -95,7 +95,7 @@ export const wapFooter_4 =
                             "label": "Full Name",
                             "placeholder": "Your Full Name",
                             "inputType": "text",
-                            "style": { ...inputStyle }
+                            "style": { ...inputStyle, "color": "white" }
                         },
 
                         {
@@ -104,7 +104,7 @@ export const wapFooter_4 =
                             "label": "Email",
                             "placeholder": "Your Email Address",
                             "inputType": "email",
-                            "style": { ...inputStyle }
+                            "style": { ...inputStyle, "color": "white" }
                         }
 
                     ]
