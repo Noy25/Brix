@@ -11,10 +11,10 @@ export function WapVideo(props) {
    }
 
    return <span>
-      <iframe title="edisst" width={cmp.width || '400'} height={cmp.height || '300'}
+      <iframe title="Video" width={cmp.width || '400'} style={style}
          onClick={(ev) => onSetCurrElement(ev, cmp)}
          className={`${cmp.id === currElementId ? 'edit-active' : ''} ${cmp.className || ''}`}
-         src={cmp.url}>s
+         src={cmp.url}>
       </iframe>
    </span>
 

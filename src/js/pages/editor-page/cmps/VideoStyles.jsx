@@ -15,6 +15,6 @@ export function VideoStyles({ element, onChangeAttr }) {
 
    return <div className="flex column style-inputs">
       <label>Youtube link</label>
-      <input className="url-input" onChange={(ev) => onSetUrl(ev)} value={element.url} type="url" name='url' />
+      <input className="url-input" onInput={(ev) => onSetUrl(ev)} value={element.url} type="url" name='url' />
    </div>
 }

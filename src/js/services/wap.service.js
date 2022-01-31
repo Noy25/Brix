@@ -119,7 +119,7 @@ function findTarget(data, elementId, cb) {
 function getScaleUnits(style) {
     const pxFields = [
         'fontSize', 'letterSpacing', 'lineHeight',
-        'paddingBlock', 'paddingInline', 'borderRadius', 'width'];
+        'paddingBlock', 'paddingInline', 'borderRadius', 'width', 'height'];
     const percentFields = []
     const styleCopy = JSON.parse(JSON.stringify(style))
     for (let attr in styleCopy) {

@@ -1,13 +1,13 @@
 export const txtStyle = {
-    'color': '#141414',
-    'textAlign': 'start',
-    'textDecoration': 'none',
-    'textShadow': 'none',
-    'fontFamily': 'poppins',
-    'fontWeight': '400',
-    'fontSize': '16',
-    'fontStyle': 'normal',
-    'letterSpacing': '1',
+    "color": "#141414",
+    "textAlign": "start",
+    "textDecoration": "none",
+    "textShadow": "none",
+    "fontFamily": "poppins",
+    "fontWeight": "400",
+    "fontSize": "16",
+    "fontStyle": "normal",
+    "letterSpacing": "1",
 };
 
 export const btnStyle = {
@@ -30,4 +30,9 @@ export const containerStyle = {
 
 export const inputStyle = {
     ...txtStyle,
+}
+
+export const videoStyle = {
+    "border":"none",
+    "aspectRatio": "16/9",
 }

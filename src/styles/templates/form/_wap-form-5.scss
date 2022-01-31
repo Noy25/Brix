@@ -1,0 +1,40 @@
+.wap-form-5 {
+   .inner-container {
+      max-height: 600px;
+      gap: 60px;
+
+      & > span:first-child {
+         align-self: stretch;
+      }
+      
+      iframe {
+         width: 641px;
+         height: 100%;
+      }
+
+      .form {
+         gap: 20px;
+
+         label {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+
+            input {
+               border-radius: 0;
+               margin-top: 5px;
+            }
+         }
+
+         & > span:last-child {
+            align-self: start;
+         }
+
+         .submit-btn {
+            display: block;
+            padding: 10px 30px;
+            background-image: linear-gradient(45deg, rgb(223, 67, 88), rgb(96, 73, 222));
+         }
+      }
+   }
+}

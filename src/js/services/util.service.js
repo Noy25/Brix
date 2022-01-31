@@ -1,6 +1,6 @@
 export const utilService = {
     getRandomId,
-    debounce
+    debounce,
 }
 
 function getRandomId(length = 10, array) {
