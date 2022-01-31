@@ -13,7 +13,7 @@ export const wapCard_2_2 = {
         {
             "id": "347ysfhszg23456",
             "type": "container", // CARD TEXT CONTAINER (LEFT)
-            "style": { ...containerStyle },
+            "style": { ...containerStyle, "paddingInline": "0" },
             "cmps": [
                 {
                     "id": "5437ehfhst2352",
@@ -37,6 +37,6 @@ export const wapCard_2_2 = {
             "id": "adlgkjaswdlkj346asd",
             "type": "img", // CARD IMG (RIGHT)
             "url": imgUrl,
-            "style": { ...imgStyle, "borderRadius": "20", "width": "100" }
+            "style": { ...imgStyle, "borderRadius": "20", "width": "450" }
         }]
 }
