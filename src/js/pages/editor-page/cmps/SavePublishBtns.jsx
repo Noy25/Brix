@@ -7,6 +7,7 @@ import { WapBuildingLoader } from '../../../cmps/WapBuildingLoader';
 import { UserModal } from '../../../cmps/UserModal';
 
 import { saveWap } from '../../../store/wap.action';
+import { setCurrElement } from '../../../store/editor.action';
 import { setUserMsg } from '../../../store/user.action';
 import { shouldShowLogin, shouldShowUserModal } from '../../../store/system.action';
 
@@ -25,6 +26,7 @@ export function SavePublishBtns() {
       dispatch(shouldShowUserModal(false));
       setShouldShowLoader(true);
       const editorBoard = document.querySelector('.editor-board');
+      dispatch(setCurrElement(null))
       wap.thumbnail = await createJpegFromElement(editorBoard, editorBoard.clientWidth, (editorBoard.clientWidth * 0.7));
       dispatch(saveWap());
       setShouldShowLoader(false);
@@ -55,7 +57,7 @@ export function SavePublishBtns() {
       } else {
          handleNameWebsite();
       }
-      
+
       dispatch(shouldShowUserModal(true));
    }
 

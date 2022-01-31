@@ -75,7 +75,11 @@ export function EditorBoard({ placeholderProps }) {
 
 
    //RENDER
-   if (!wap?.cmps) return <div>Loading...</div>
+   if (!wap?.cmps) return <div>
+      Loading...
+      {/* Div for boardSize */}
+      <div ref={sectionRef}></div>
+   </div>
 
    return <Droppable droppableId='board'>
       {(provided, snapshot) => {

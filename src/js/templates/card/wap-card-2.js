@@ -14,12 +14,12 @@ export const wapCard_2 = {
             "id": "alkdfsjlk34jt5lksjxc",
             "type": "img", // CARD IMG (LEFT)
             "url": imgUrl,
-            "style": { ...imgStyle, "borderRadius": "20", "width": "100" }
+            "style": { ...imgStyle, "borderRadius": "20", "width": "450" }
         },
         {
             "id": "45356dgfasdf",
             "type": "container", // CARD TEXT CONTAINER (RIGHT)
-            "style": { ...containerStyle },
+            "style": { ...containerStyle, "paddingInline": "0" },
             "cmps": [
                 {
                     "id": "sdgkjlk34j6tlkscj",

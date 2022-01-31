@@ -49,8 +49,8 @@ export function Login() {
             console.log(err);
         }
     }
-    
-    const handleGoogleLogin = ({profileObj}) => {
+
+    const handleGoogleLogin = ({ profileObj }) => {
         // console.log(profileObj);
         const googleCredentials = {
             username: profileObj.email,
@@ -63,7 +63,7 @@ export function Login() {
     const handleGoogleFailure = res => {
         console.log(res);
     }
-    
+
     const setSignup = (ev) => {
         ev.stopPropagation();
         setIsLogin(false)
@@ -74,7 +74,7 @@ export function Login() {
         setIsLogin(true)
     }
 
-
+    console.log(process.env);
     return (
         // screen gets a callback function to hide itself
         <Screen cb={() => dispatch(shouldShowLogin(false))}>
@@ -108,11 +108,11 @@ export function Login() {
                 </form>
 
                 <GoogleLogin className="google-login-real"
-                clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-                buttonText="Continue with Google"
-                onSuccess={handleGoogleLogin}
-                onFailure={handleGoogleFailure}
-                cookiePolicy="single_host_origin">
+                    clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+                    buttonText="Continue with Google"
+                    onSuccess={handleGoogleLogin}
+                    onFailure={handleGoogleFailure}
+                    cookiePolicy="single_host_origin">
 
                 </GoogleLogin>
 
