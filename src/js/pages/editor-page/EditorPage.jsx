@@ -82,6 +82,7 @@ export function EditorPage() {
             }, 0);
 
       setPlaceholderProps({
+         display: (event.source.droppableId === 'sidebar') ? 'none' : 'block',
          clientHeight,
          clientWidth,
          clientY,
@@ -126,6 +127,7 @@ export function EditorPage() {
          }, 0);
 
       setPlaceholderProps({
+         display: (event.source.droppableId === 'sidebar') ? 'none' : 'block',
          clientHeight,
          clientWidth,
          clientY,

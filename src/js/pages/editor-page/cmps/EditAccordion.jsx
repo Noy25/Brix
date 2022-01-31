@@ -47,7 +47,6 @@ export function EditAccordion() {
     useEffect(() => {
         if (currElement?.id === prevElement?.id &&
             prevHistoryLength <= currHistoryLength) {
-            console.log(currElement.id, prevElement.id);
             dispatch(updateWap(currElement));
         }
         window.addEventListener('keydown', onRemoveElementByKey);

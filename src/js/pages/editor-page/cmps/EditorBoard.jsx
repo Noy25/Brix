@@ -57,14 +57,8 @@ export function EditorBoard({ placeholderProps }) {
    }
 
    const handleTxtChange = ({ target }, element) => {
-      // const attr = {
-      //    attrName: 'txt',
-      //    attrValue: target.innerText
-      // }
-      // dispatch(updateCurrElementAttr(currElement, attr))
       element.txt = target.innerText;
-      dispatch(updateWap(currElement))
-
+      dispatch(updateWap(element))
    }
 
    const getBoardSize = () => {
@@ -107,7 +101,8 @@ export function EditorBoard({ placeholderProps }) {
                      top: placeholderProps.clientY,
                      left: placeholderProps.clientX,
                      height: placeholderProps.clientHeight,
-                     width: placeholderProps.clientWidth
+                     width: placeholderProps.clientWidth,
+                     display: placeholderProps.display
                   }}
                />
             )}
