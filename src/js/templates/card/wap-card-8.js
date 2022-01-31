@@ -68,57 +68,57 @@ export const wapCard_8 = {
                ]
             },
             //Card 2
-            // {
-            //    "id": "df45g1sdfgd",
-            //    "type": "container",
-            //    "style": { ...containerStyle, "paddingInline": "0", "paddingBlock": "20", "paddingInline": "20", "backgroundImage": "linear-gradient(45deg, #df4358, #6049de)" },
-            //    "className": "card flex column",
-            //    "cmps": [
-            //       //Upper-container
-            //       {
-            //          "id": "2165ujk1gh3nbfg",
-            //          "type": "container",
-            //          "style": { ...containerStyle, "paddingInline": "0", "paddingInline": "0", "paddingBlock": "15", "backgroundColor": "transparent" },
-            //          "className": "upper-container flex",
-            //          "cmps": [
-            //             //Card img
-            //             {
-            //                "id": "F1H65GHK51GGH",
-            //                "type": "img",
-            //                "url": "http://res.cloudinary.com/dpmzxdfuh/image/upload/v1643458547/tfp6kdfm9pf1cposgq43.svg",
-            //                "style": { ...imgStyle, "width": "120" }
-            //             },
-            //             {
-            //                "id": "NJ351TD",
-            //                "type": "container",
-            //                "style": { ...containerStyle, "paddingInline": "0", "paddingBlock": "0", "paddingInline": "20", "backgroundColor": "transparent" },
-            //                "className": "card-header flex column",
-            //                "cmps": [
-            //                   {
-            //                      "id": "N516H54JG6H6FG",
-            //                      "type": "txt",
-            //                      "txt": "Ethereum",
-            //                      "style": { ...txtStyle, "fontFamily": "montserrat", "color": "#f6f6f6", "fontWeight": "700", "fontSize": "20" }
-            //                   },
-            //                   {
-            //                      "id": "FUNUD54HNDF0GN",
-            //                      "type": "txt",
-            //                      "txt": "Cryptocurrency",
-            //                      "className": "muted",
-            //                      "style": { ...txtStyle, "fontFamily": "montserrat", "color": "#f6f6f6" }
-            //                   },
-            //                ]
-            //             }
-            //          ]
-            //       },
-            //       {
-            //          "id": "3245GH48GH65",
-            //          "type": "txt",
-            //          "txt": "Ethereum is described as “the world’s programmable blockchain,” positioning itself as an electronic, programmable network with many applications..",
-            //          "style": { ...txtStyle, "fontFamily": "montserrat", "color": "#f6f6f6" }
-            //       }
-            //    ]
-            // },
+            {
+               "id": "df45g1sdfgd",
+               "type": "container",
+               "style": { ...containerStyle, "paddingInline": "0", "paddingBlock": "20", "paddingInline": "20", "backgroundImage": "linear-gradient(45deg, #df4358, #6049de)" },
+               "className": "card flex column",
+               "cmps": [
+                  //Upper-container
+                  {
+                     "id": "2165ujk1gh3nbfg",
+                     "type": "container",
+                     "style": { ...containerStyle, "paddingInline": "0", "paddingInline": "0", "paddingBlock": "15", "backgroundColor": "transparent" },
+                     "className": "upper-container flex",
+                     "cmps": [
+                        //Card img
+                        {
+                           "id": "F1H65GHK51GGH",
+                           "type": "img",
+                           "url": "http://res.cloudinary.com/dpmzxdfuh/image/upload/v1643458547/tfp6kdfm9pf1cposgq43.svg",
+                           "style": { ...imgStyle, "width": "120" }
+                        },
+                        {
+                           "id": "NJ351TD",
+                           "type": "container",
+                           "style": { ...containerStyle, "paddingInline": "0", "paddingBlock": "0", "paddingInline": "20", "backgroundColor": "transparent" },
+                           "className": "card-header flex column",
+                           "cmps": [
+                              {
+                                 "id": "N516H54JG6H6FG",
+                                 "type": "txt",
+                                 "txt": "Ethereum",
+                                 "style": { ...txtStyle, "fontFamily": "montserrat", "color": "#f6f6f6", "fontWeight": "700", "fontSize": "20" }
+                              },
+                              {
+                                 "id": "FUNUD54HNDF0GN",
+                                 "type": "txt",
+                                 "txt": "Cryptocurrency",
+                                 "className": "muted",
+                                 "style": { ...txtStyle, "fontFamily": "montserrat", "color": "#f6f6f6" }
+                              },
+                           ]
+                        }
+                     ]
+                  },
+                  {
+                     "id": "3245GH48GH65",
+                     "type": "txt",
+                     "txt": "Ethereum is described as “the world’s programmable blockchain,” positioning itself as an electronic, programmable network with many applications..",
+                     "style": { ...txtStyle, "fontFamily": "montserrat", "color": "#f6f6f6" }
+                  }
+               ]
+            },
             //Card 3
             {
                "id": "BH24NB125DF41GB0N",
