@@ -75,7 +75,7 @@ export function createRoom(redirect) {
         draftService.saveDraft(wap);
         dispatch({ type: 'SET_WAP', wap });
         socketService.emit('create-room', { wap, nickname });
-        navigator.clipboard.writeText(`localhost:3000/editor/${wap.id}`); // DONT FORGET TO CHANGE LOCALHOST ON BUILD
+        navigator.clipboard.writeText(`https://webzone-app.herokuapp.com/editor/${wap.id}`); // DONT FORGET TO CHANGE LOCALHOST ON BUILD
         redirect(wap.id);
     }
 }

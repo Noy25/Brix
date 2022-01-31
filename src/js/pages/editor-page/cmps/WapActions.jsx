@@ -20,7 +20,7 @@ export function WapActions() {
    const onWorkTogether = () => {
       // If user is already in a room but wants to copy a link again
       if (wapId) {
-         navigator.clipboard.writeText(`localhost:3000/editor/${wapId}`); // DONT FORGET TO CHANGE LOCALHOST ON BUILD
+         navigator.clipboard.writeText(`https://webzone-app.herokuapp.com/editor/${wapId}`); // DONT FORGET TO CHANGE LOCALHOST ON BUILD
          dispatch(setUserMsg({ type: 'success', txt: 'Invitation copied to clipboard !', timer: 7000 }));
          return
       }

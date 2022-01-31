@@ -11,7 +11,7 @@ export const wapSection_8 = {
       {
          "id": "FG52D41G51",
          "type": "container",
-         "style": { ...containerStyle, "paddingInline": "0", "paddingBlock": "60", "paddingInline": "20", "backgroundImage": "linear-gradient(29deg, #04071a, #350564)" },
+         "style": { ...containerStyle, "paddingInline": "0", "paddingBlock": "60", "paddingInline": "20", "backgroundImage": "background-image: linear-gradient(29deg, rgb(3 5 18), rgb(122 67 212));" },
          "className": "layout-container flex",
          "cmps": [
             //Img (left)
