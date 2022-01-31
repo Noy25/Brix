@@ -1,4 +1,4 @@
-import { wapService } from '../../../../services/wap.service'
+import { wapService } from '../../../../services/wap.service';
 import { Draggable } from 'react-beautiful-dnd';
 import { WapBtn } from './WapBtn';
 import { WapDiv } from './WapDiv';

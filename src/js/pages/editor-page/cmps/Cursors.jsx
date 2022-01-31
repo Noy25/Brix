@@ -14,11 +14,7 @@ export function Cursors({ wapId }) {
     useEffect(() => {
         socketService.setup();
 
-        return () => {
-            socketService.off('mouse-moved');
-            socketService.off('remove-cursor', removeCursor);
-            socketService.terminate();
-        }
+        return () => socketService.terminate();
     }, [])
 
 
@@ -34,6 +30,11 @@ export function Cursors({ wapId }) {
         socketService.off('remove-cursor', removeCursor);
         socketService.on('mouse-moved', (newCursor) => utilService.debounce(updateCursors(newCursor)));
         socketService.on('remove-cursor', removeCursor);
+
+        return () => {
+            socketService.off('mouse-moved');
+            socketService.off('remove-cursor', removeCursor);
+        }
     }, [cursors, wapId])
 
 
@@ -51,7 +52,11 @@ export function Cursors({ wapId }) {
                 return [...prevCursors];
             })
         } else {
-            setCursors(prevCursors => [...prevCursors, newCursor]);
+            setCursors(prevCursors => {
+                const doesCursorExist = prevCursors.some(cursor => cursor.id === newCursor.id);
+                if (doesCursorExist) return prevCursors;
+                else return [...prevCursors, newCursor];
+            });
         }
     }
 
@@ -60,7 +65,7 @@ export function Cursors({ wapId }) {
         setCursors(filteredCursors);
     }
 
-    
+
     return <>
         {cursors.length > 0 &&
             cursors.map(cursor => {
@@ -71,7 +76,7 @@ export function Cursors({ wapId }) {
                         top: cursor.pos.y,
                         left: cursor.pos.x,
                         zIndex: "9999",
-                    }}><div style={{ transform:"rotate(-80deg)" }}><BsCursorFill fill={cursor.color} fontSize="1.5rem" /></div>
+                    }}><div style={{ transform: "rotate(-80deg)" }}><BsCursorFill fill={cursor.color} fontSize="1.5rem" /></div>
                     <span
                         style={{
                             display: "block",

@@ -75,7 +75,7 @@ export function Login() {
         setIsLogin(true)
     }
 
-    console.log(process.env);
+    
     return (
         // screen gets a callback function to hide itself
         <Screen cb={() => dispatch(shouldShowLogin(false))}>

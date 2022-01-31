@@ -75,7 +75,11 @@ export function createRoom(redirect) {
         draftService.saveDraft(wap);
         dispatch({ type: 'SET_WAP', wap });
         socketService.emit('create-room', { wap, nickname });
-        navigator.clipboard.writeText(`https://webzone-app.herokuapp.com/editor/${wap.id}`); // DONT FORGET TO CHANGE LOCALHOST ON BUILD
+
+        const BASE_URL = process.env.NODE_ENV === 'production'
+            ? `https://webzone-app.herokuapp.com/editor/${wap.id}`
+            : `localhost:3000/editor/${wap.id}`
+        navigator.clipboard.writeText(BASE_URL);
         redirect(wap.id);
     }
 }
@@ -168,7 +172,8 @@ export function duplicateElement(element) {
 // Handles anything related to drag n drop including Adding/Removing elements
 export function switchElement(res) {
     return (dispatch, getState) => {
-        const { wap } = getState().wapModule;
+        let { wap } = getState().wapModule;
+        wap = JSON.parse(JSON.stringify(wap));
 
         const { destination, source, draggableId } = res;
         // let draggedElement = null;
@@ -227,8 +232,8 @@ export function undo() {
         if (prevWap.id) socketService.emit('update-wap', prevWap);
         dispatch({ type: 'UNDO_WAP', wap: prevWap, wapHistory });
 
-        wapService.findTarget(prevWap, currElement.id, (cmpsArr, idx) => {
-            dispatch({ type: 'SET_CURR_ELEMENT', element: cmpsArr[idx] })
+        if (currElement) wapService.findTarget(prevWap, currElement.id, (cmpsArr, idx) => {
+            dispatch({ type: 'SET_CURR_ELEMENT', element: cmpsArr[idx] });
         })
     }
 }

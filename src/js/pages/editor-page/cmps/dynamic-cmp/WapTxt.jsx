@@ -1,5 +1,5 @@
 export function WapTxt(props) {
-   const { cmp, onSetCurrElement, handleTxtChange, currElementId, style, isPublished } = props
+   const { cmp, onSetCurrElement, handleTxtChange, currElementId, style, isPublished, textRef } = props
 
    if (isPublished) {
       return <span>
@@ -20,6 +20,7 @@ export function WapTxt(props) {
          contentEditable="true"
          suppressContentEditableWarning={true}
          spellCheck="false"
+         ref={cmp.id === currElementId ? textRef : null}
       >
          {cmp.txt}
       </p>

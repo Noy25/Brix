@@ -14,6 +14,7 @@ import { updateWap } from '../../../store/wap.action';
 export function EditorBoard({ placeholderProps }) {
    const dispatch = useDispatch();
    const sectionRef = useRef();
+   const textRef = useRef();
 
    const [mediaClass, setMediaClass] = useState('');
 
@@ -31,11 +32,11 @@ export function EditorBoard({ placeholderProps }) {
    }, [])
 
    useEffect(() => {
-      handleResize()
+      handleResize();
    }, [boardSize])
 
    const handleResize = () => {
-      setMediaClass(getMediaClass())
+      setMediaClass(getMediaClass());
    }
 
    const getMediaClass = () => {
@@ -52,24 +53,20 @@ export function EditorBoard({ placeholderProps }) {
    }
 
    const onSetCurrElement = (ev, cmp) => {
-      ev.stopPropagation()
-      dispatch(setCurrElement(cmp))
+      ev.stopPropagation();
+      if (textRef.current && (cmp.id !== currElement.id)) textRef.current.blur();
+      dispatch(setCurrElement(cmp));
    }
 
    const handleTxtChange = ({ target }, element) => {
-      // const attr = {
-      //    attrName: 'txt',
-      //    attrValue: target.innerText
-      // }
-      // dispatch(updateCurrElementAttr(currElement, attr))
+      element = JSON.parse(JSON.stringify(element));
       element.txt = target.innerText;
-      dispatch(updateWap(currElement))
-
+      dispatch(updateWap(element));
    }
 
    const getBoardSize = () => {
-      if (!boardSize || boardSize === 'desktop') return ''
-      else return boardSize
+      if (!boardSize || boardSize === 'desktop') return '';
+      else return boardSize;
    }
 
 
@@ -92,7 +89,7 @@ export function EditorBoard({ placeholderProps }) {
             {...provided.droppableProps}
             ref={provided.innerRef}>
             {wap.cmps.map((cmp, i) =>
-               <DynamicCmp key={i} idx={i} isPublished={false} onSetCurrElement={onSetCurrElement} cmp={cmp} currElementId={currElement?.id} mediaClass={mediaClass} handleTxtChange={handleTxtChange} />
+               <DynamicCmp textRef={textRef} key={i} idx={i} isPublished={false} onSetCurrElement={onSetCurrElement} cmp={cmp} currElementId={currElement?.id} mediaClass={mediaClass} handleTxtChange={handleTxtChange} />
             )}
 
             {/* Div for boardSize */}

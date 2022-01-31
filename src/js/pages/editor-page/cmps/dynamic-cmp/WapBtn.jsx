@@ -1,5 +1,5 @@
 export function WapBtn(props) {
-      const { cmp, onSetCurrElement, handleTxtChange, style, currElementId, isPublished } = props
+      const { cmp, onSetCurrElement, handleTxtChange, style, currElementId, isPublished, textRef } = props
 
       if (isPublished) {
             return <span>
@@ -17,9 +17,9 @@ export function WapBtn(props) {
                   className={`${cmp.id === currElementId ? 'edit-active' : ''} ${cmp.className || ''}`}
                   contentEditable="true"
                   suppressContentEditableWarning={true}
-                  onBlur={handleTxtChange}
-                  spellCheck="false">
-
+                  onBlur={(ev) => handleTxtChange(ev, cmp)}
+                  spellCheck="false"
+                  ref={cmp.id === currElementId ? textRef : null}>
                   {cmp.txt}</a>
       </span>
 }

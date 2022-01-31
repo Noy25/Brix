@@ -9,8 +9,7 @@ export function editorReducer(state = initialState, action) {
    switch (action.type) {
 
       case 'SET_CURR_ELEMENT':
-         let { element } = action;
-         return newState = { ...state, currElement: { ...element } };
+         return newState = { ...state, currElement: { ...action.element } };
 
       case 'UPDATE_CURR_ELEMENT':
          return newState = { ...state, currElement: { ...action.updatedElement } };

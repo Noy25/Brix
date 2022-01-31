@@ -10,7 +10,7 @@ const axios = Axios.create({
 const serverPort = 3030;
 const BASE_URL = process.env.NODE_ENV === 'production'
     ? '/api/'
-    : `//localhost:${serverPort}/api/`
+    : `//localhost:${serverPort}/api/` // * the double slash (//) is necessary!
 
     
 export const httpService = {
