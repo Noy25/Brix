@@ -1,15 +1,15 @@
 import { txtStyle, btnStyle, imgStyle, inputStyle, containerStyle, videoStyle } from '../default-styles';
 
 
-export const wapForm_5 = {
+export const wapVideo_5 = {
    "id": "246246tlwksdjflakjfadf",
    "type": "container",
-   "category": "wap-form",
+   "category": "wap-video",
    "className": "wap-form-5",
-   "thumbnail": "http://res.cloudinary.com/dpmzxdfuh/image/upload/v1643279854/bxoycwljbvxln2nqwm73.jpg",
+   "thumbnail": "http://res.cloudinary.com/dpmzxdfuh/image/upload/v1643703019/hz2cwx5sprxtfu9wbeuw.jpg",
    "style": { ...containerStyle, "paddingInline": "40", "paddingBlock": "60", "backgroundColor": "#0b0b0b" },
    "cmps": [
-      // CONTAINER
+      // INNER CONTAINER
       {
          "id": "ajlk1235jtlskdcj35yegfh",
          "type": "container",
@@ -70,7 +70,7 @@ export const wapForm_5 = {
                   },
                   {
                      "id": "u456tjh1d6f5bw3r7yu4ef5j",
-                     "type": "btn", // SUBMIT BTN (CENTER)
+                     "type": "btn", // SUBMIT BTN
                      "url": "#",
                      "txt": "Submit",
                      "className": "submit-btn",

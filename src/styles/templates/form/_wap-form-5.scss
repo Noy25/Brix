@@ -6,7 +6,7 @@
       & > span:first-child {
          align-self: stretch;
       }
-      
+
       iframe {
          width: 641px;
          height: 100%;
@@ -18,7 +18,6 @@
          label {
             display: flex;
             flex-direction: column;
-            width: 300px;
 
             input {
                border-radius: 0;
@@ -38,18 +37,40 @@
       }
    }
 
-   &.media-1200{
+   &.media-1200 {
       iframe {
          width: 530px;
       }
    }
-   
-   &.media-1000{
-      // iframe {
-      //    width: 450px;
-      // }
+
+   &.media-1000 {
       .inner-container {
          flex-direction: column;
+         max-height: unset;
+
+         & > span:first-child {
+            align-self: auto;
+         }
       }
+   }
+
+   &.media-800 {
+      iframe {
+         width: 450px;
+      }
+   }
+
+   &.media-600 {
+      padding-inline: 20px !important;
+      padding-block: 40px !important;
+      iframe {
+         width: 330px;
+      }
+   }
+}
+
+@media (max-width: 380px) {
+   .wap-form-5 .inner-container iframe {
+      width: 285px;
    }
 }

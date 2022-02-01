@@ -22,15 +22,19 @@
             gap: 20px;
 
             a{
-               min-width: 140px;    
+               min-width: 160px;    
                min-height: 50px;
                display: grid;
                place-content: center;
                border: 1px solid #f6f6f6;
 
                &:hover{
-                  filter:brightness(1.1)
+                  filter:brightness(1.1);
                }
+            }
+
+            @media (max-width: 460px) {
+               flex-direction: column;
             }
          }
       }
@@ -55,3 +59,9 @@
       }
    }
 }
+
+// @media (max-width: 400px) {
+//    .wap-section-8 .layout-container .content-container .btns-container {
+//       flex-direction: column;
+//    }
+// }
