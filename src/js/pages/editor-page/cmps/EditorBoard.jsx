@@ -56,6 +56,13 @@ export function EditorBoard({ placeholderProps }) {
       ev.stopPropagation();
       if (textRef.current && (cmp.id !== currElement.id)) textRef.current.blur();
       dispatch(setCurrElement(cmp));
+      if (sectionRef.current.offsetWidth < 600) {
+         ev.target.scrollIntoView({
+            behavior: 'auto',
+            block: 'center',
+            inline: 'center'
+         });
+      }
    }
 
    const handleTxtChange = ({ target }, element) => {
