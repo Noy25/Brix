@@ -77,10 +77,10 @@ export function ImageStyles({ element, onChangeStyle, onUploadImg, onChangeAttr 
          <input className="url-input" onChange={(ev) => onChangeAttr(ev)} type="url" name='url' />
       </label>
 
-      <label className="upload-img-label flex justify-around" >
+      <label className="upload-img-label flex" >
          Upload Image
-         <FaUpload />
-         <input style={{ display: 'none' }} onChange={(ev) => onUploadImg(ev, false)} type="file" />
+         <input onChange={(ev) => onUploadImg(ev, true)} type="file" />
+         <div className='upload-img-btn' ><FaUpload /></div>
       </label>
 
    </div>

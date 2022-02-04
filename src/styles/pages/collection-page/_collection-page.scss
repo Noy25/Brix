@@ -148,29 +148,11 @@
                     }
                 }
 
-                // input[type="checkbox"]:checked ~ .menu-btn {
-                //     background-color:#eeeeee;
-                // }
-
                 input[type="checkbox"]:checked + ul {
                     max-height: 999px;
                     border: 1px solid #cfcfcf;
                 }
             }
-
-            // .remove-btn {
-            //     padding: 10px;
-            //     font-size: 18px;
-            //     border-radius: 50%;
-            //     transition: all 0.3s;
-
-            //     &:hover {
-            //         background-color: #f57e69;
-            //         & > svg {
-            //             fill: #eaeaea;
-            //         }
-            //     }
-            // }
         }
 
         .scratch-thumbnail {

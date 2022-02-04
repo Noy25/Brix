@@ -231,16 +231,8 @@
             }
 
             .upload-img-label {
-                // font-weight: 500;
-                // border-radius: 5px;
-                // padding: 8px 12px;
-                // text-align: center;
                 cursor: pointer;
-                // width: fit-content;
-                // gap: 10px;
-                // margin: auto;
                 transition: 200ms;
-                // background-color: #1d375a2b;
                 justify-content: space-between;
 
                 @include for-tablet-layout {
@@ -252,7 +244,6 @@
                 }
 
                 .upload-img-btn {
-                    // background-color: #e7e7e7db;
                     padding: 10px 15px;
                     font-size: 1rem;
                     border-radius: 5px;

@@ -1,17 +1,14 @@
 // Setup
 @import "./setup/typography";
 @import "./setup/variables";
-@import "./setup/functions";
 @import "./setup/mixins";
 
 // BASICS
 
 @import "./basics/base";
 @import "./basics/helpers";
-@import "./basics/layout";
-@import "./basics/inputs";
-@import "./basics/buttons";
 @import "./basics/animations";
+
 
 // PAGES
 
@@ -37,7 +34,7 @@
 @import "./pages/collection-page/collection-page";
 
 //PUBLISH PAGE
-@import "./pages/publish-page";
+@import "./pages/publish-page/publish-page";
 
 // CMPS
 
@@ -47,6 +44,9 @@
 @import "./cmps/login";
 @import "./cmps/_wap-building-loader";
 @import "./cmps/_user-modal";
+
+
+
 
 // TEMPLATES
 

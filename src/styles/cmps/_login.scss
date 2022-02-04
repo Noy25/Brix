@@ -11,8 +11,6 @@
     border-radius: 10px;
     cursor: default;
 
-    // transition: height .3s; // transition when toggling signup/login
-
     i {
         width: 30px;
         height: 30px;
@@ -65,7 +63,7 @@
         }
     }
 
-    .google-login-real {
+    .google-login {
         width: 100%;
         margin: 25px auto;
         display: flex;
@@ -90,48 +88,6 @@
             border-bottom-right-radius: 3px !important;
         }
     }
-
-    // .google-login {
-    //     border: 1px solid #4285f4;
-
-    //     button {
-    //         background-color: #4285f4;
-    //     }
-    // }
-
-    // .facebook-login {
-    //     border: 1px solid #3b5998;
-    //     color: #3b5998;
-
-    //     button {
-    //         background-color: #3b5998;
-    //     }
-    // }
-
-    // .google-login,
-    // .facebook-login {
-    //     width: 100%;
-    //     height: 35px;
-    //     margin: 25px auto;
-    //     border-radius: 3px;
-
-    //     .icon {
-    //         width: 36px;
-    //         height: 100%;
-    //         background: #fff;
-    //     }
-
-    //     button {
-    //         flex-grow: 1;
-    //         padding: 10px;
-    //         color: white;
-    //     }
-
-    //     &:hover {
-    //         cursor: pointer;
-    //         filter: brightness(1.1);
-    //     }
-    // }
 
     p span {
         text-decoration: underline;

@@ -65,6 +65,7 @@ export function EditAccordion() {
             case 'container': return setExpanded('panel4');
             case 'video': return setExpanded('panel6');
             case 'input': return setExpanded('panel7');
+            default: return;
         }
     }
 
@@ -97,7 +98,7 @@ export function EditAccordion() {
     }
 
     const onUploadImg = (ev, isBackground) => {
-        dispatch(uploadImage(ev, currElement, isBackground));
+        dispatch(uploadImage(ev, isBackground));
     }
 
     const onRemoveElement = () => {
@@ -107,7 +108,7 @@ export function EditAccordion() {
 
     const onDuplicateElement = () => {
         if (!currElement) return
-        dispatch(duplicateElement(currElement));
+        dispatch(duplicateElement());
     }
 
     const onUndo = () => {

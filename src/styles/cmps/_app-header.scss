@@ -193,15 +193,9 @@
     }
 }
 
-// In EditorPage :
-.main-header.minimized,
-.placeholder.minimized {
-    // height: $minimized-header-height;
-}
-
 // In PublishPage :
-.main-header.display-none,
-.placeholder.display-none {
+.main-header.hidden,
+.placeholder.hidden {
     display: none;
 
     &.active-scroll-1,

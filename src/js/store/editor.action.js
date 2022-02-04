@@ -37,19 +37,21 @@ export function updateCurrElementAttr(attr) {
    }
 }
 
-export function uploadImage(ev, element, isBackground) {
-   return async (dispatch) => {
+export function uploadImage(ev, isBackground) {
+   return async (dispatch, getState) => {
+
+      let { currElement } = getState().editorModule;
 
       if (!ev.target.value) return
       try {
          const cloudUrl = await uploadImgToCloud(ev)
          if (isBackground) {
-            element = { ...element, style: { ...element.style, backgroundImage: `url(${cloudUrl})` } };
+            currElement = { ...currElement, style: { ...currElement.style, backgroundImage: `url(${cloudUrl})` } };
          } else {
-            element.url = cloudUrl;
+            currElement.url = cloudUrl;
          }
 
-         dispatch({ type: 'UPDATE_CURR_ELEMENT', updatedElement: element });
+         dispatch({ type: 'UPDATE_CURR_ELEMENT', updatedElement: currElement });
       } catch (err) {
          console.log(err);
       }

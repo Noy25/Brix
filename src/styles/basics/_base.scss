@@ -3,18 +3,31 @@
     margin: 0;
     padding: 0;
 }
+
 :root {
     // this is the default value below
     --toastify-color-progress-light: linear-gradient(to right, #007aff, #007aff) !important;
 }
+
 html {
     font-size: 16px;
     font-family: $main-font;
     color: black;
-    // We might need to use variable declarations here if we want to have a theme toggler.
-    // $font-main:
-    // $color-main:
-    // $color-secondary:
+}
+
+body {
+    background-color: $color1;
+    margin: 0;
+}
+
+main{
+    flex: 1;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
 }
 
 button,
@@ -22,9 +35,10 @@ input {
     font-family: $main-font;
 }
 
-body {
-    background-color: $color1;
-    margin: 0;
+input[type="text"],
+input[type="password"] {
+    outline: none;
+    border: none;
 }
 
 ::-webkit-scrollbar {
@@ -48,11 +62,4 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #a0a0a0;
-}
-
-// ::-webkit-scrollbar:double-button {
-// }
-
-main{
-    flex: 1;
 }
