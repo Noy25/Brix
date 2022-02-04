@@ -1,11 +1,12 @@
+// React
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { useParams } from 'react-router-dom';
-
+// Actions
 import { setUserMsg } from '../../../store/user.action';
 import { createRoom } from '../../../store/wap.action';
 import { setBoardSize } from '../../../store/editor.action';
-
+// Assets
 import { FaMobileAlt, FaTabletAlt, FaDesktop } from "react-icons/fa";
 import { IoIosPeople } from "react-icons/io";
 import { SavePublishBtns } from './SavePublishBtns';
@@ -17,10 +18,14 @@ export function WapActions() {
    const navigate = useNavigate();
    const { wapId } = useParams();
 
+
    const onWorkTogether = () => {
       // If user is already in a room but wants to copy a link again
       if (wapId) {
-         navigator.clipboard.writeText(`https://webzone-app.herokuapp.com/editor/${wapId}`); // DONT FORGET TO CHANGE LOCALHOST ON BUILD
+         const BASE_URL = process.env.NODE_ENV === 'production'
+            ? `https://webzone-app.herokuapp.com/editor/${wapId}`
+            : `localhost:3000/editor/${wapId}`
+         navigator.clipboard.writeText(BASE_URL);
          dispatch(setUserMsg({ type: 'success', txt: 'Invitation copied to clipboard !', timer: 7000 }));
          return
       }
@@ -39,6 +44,7 @@ export function WapActions() {
 
 
    return <div className="wap-actions flex column align-center">
+
       <div className="media-btns flex justify-between align center">
          <FaDesktop size={28} className='muted' onClick={() => onSetBoardSize('desktop')} />
          <FaTabletAlt size={28} className='muted' onClick={() => onSetBoardSize('tablet')} />

@@ -1,28 +1,29 @@
+// React
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import GoogleLogin from 'react-google-login';
-
+// Actions
 import { onSignup, onLogin } from '../store/user.action';
 import { shouldShowLogin } from '../store/system.action';
-
-import userProfile from '../../assets/imgs/user.png';
-
-import { FcGoogle } from 'react-icons/fc'
-import { FaFacebookF } from 'react-icons/fa'
-
+// Cmps
 import { Screen } from './Screen';
+// Assets
+import userProfile from '../../assets/imgs/user.png';
+import { FaFacebookF } from 'react-icons/fa';
+
 
 export function Login() {
-
-    const [isLogin, setIsLogin] = useState(true);
-    const [credentials, setCredentials] = useState({ username: '', password: '', nickname: '' });
 
     const dispatch = useDispatch();
     const inputRef = useRef();
 
+    const [isLogin, setIsLogin] = useState(true);
+    const [credentials, setCredentials] = useState({ username: '', password: '', nickname: '' });
+
     useEffect(() => {
         inputRef.current.focus();
     }, [])
+
 
     const handleChange = ({ target }) => {
         const { name, value } = target;
@@ -51,7 +52,6 @@ export function Login() {
     }
 
     const handleGoogleLogin = ({ profileObj }) => {
-        // console.log(profileObj);
         const googleCredentials = {
             username: profileObj.email,
             password: '123', // fictive password for backend auth
@@ -60,7 +60,7 @@ export function Login() {
         dispatch(onSignup(googleCredentials));
         dispatch(shouldShowLogin(false));
     }
-    
+
     const handleGoogleFailure = res => {
         console.log(res);
     }
@@ -69,13 +69,13 @@ export function Login() {
         ev.stopPropagation();
         setIsLogin(false)
     }
-    
+
     const setLogin = (ev) => {
         ev.stopPropagation();
-        setIsLogin(true)
+        setIsLogin(true);
     }
 
-    
+
     return (
         // screen gets a callback function to hide itself
         <Screen cb={() => dispatch(shouldShowLogin(false))}>
@@ -116,11 +116,6 @@ export function Login() {
                     cookiePolicy="single_host_origin">
 
                 </GoogleLogin>
-
-                {/* <div className="google-login flex align-center">
-                    <div className="icon flex justify-center align-center"><FcGoogle /></div>
-                    <button>Continue with Google</button>
-                </div> */}
 
                 {/* <div className="facebook-login flex align-center">
                     <div className="icon flex justify-center align-center"><FaFacebookF /></div>

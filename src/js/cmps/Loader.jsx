@@ -1,3 +1,4 @@
+// SVG
 export function Loader({ color }) {
     return <svg style={{ position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%,-50%)' }} width="100" height="100" version="1.1" id="L7" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
         viewBox="0 0 100 100" enableBackground="new 0 0 100 100" >

@@ -24,16 +24,16 @@ function findTarget(webApp, elementId, cb) {
 // Example 1
 export function removeElement(element) {
     return (dispatch, getState) => {
-        let { wap } = getState().wapModule;
-        wap = JSON.parse(JSON.stringify(wap));
+        let { webApp } = getState().wapModule;
+        webApp = JSON.parse(JSON.stringify(webApp));
 
         //
-        findTarget(wap, element.id, (cmpsArr, idx) => cmpsArr.splice(idx, 1));
+        findTarget(webApp, element.id, (cmpsArr, idx) => cmpsArr.splice(idx, 1));
         //
 
-        draftService.saveDraft(wap);
-        if (wap.id) socketService.emit('update-wap', wap);
-        dispatch({ type: 'UPDATE_WAP', wap });
+        draftService.saveDraft(webApp);
+        if (webApp.id) socketService.emit('update-wap', webApp);
+        dispatch({ type: 'UPDATE_WAP', webApp });
     }
 }
 
@@ -43,19 +43,19 @@ export function removeElement(element) {
 // Example 2
 export function duplicateElement(element) {
     return (dispatch, getState) => {
-        let { wap } = getState().wapModule;
-        wap = JSON.parse(JSON.stringify(wap));
+        let { webApp } = getState().wapModule;
+        webApp = JSON.parse(JSON.stringify(webApp));
         const elementId = element.id;
         element = JSON.parse(JSON.stringify(element));
         wapService.replaceIds(element);
 
         //
-        findTarget(wap, elementId, (cmpsArr, idx) => cmpsArr.splice(idx, 0, element));
+        findTarget(webApp, elementId, (cmpsArr, idx) => cmpsArr.splice(idx, 0, element));
         //
 
-        draftService.saveDraft(wap);
-        if (wap.id) socketService.emit('update-wap', wap);
-        dispatch({ type: 'UPDATE_WAP', wap })
+        draftService.saveDraft(webApp);
+        if (webApp.id) socketService.emit('update-wap', webApp);
+        dispatch({ type: 'UPDATE_WAP', webApp })
         return element;
     }
 }
