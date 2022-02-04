@@ -35,27 +35,6 @@ export const wapHero_8 = {
                   },
                   //BORDERS
                   {
-                     "id": "v265f41bhg652h",
-                     "type": "container",
-                     "style": { ...containerStyle, "paddingInline": "0", "paddingBlock": "0", "backgroundColor": "transparent" },
-                     "className": "border-top",
-                     "cmps": []
-                  },
-                  {
-                     "id": "5sdfg41zx6",
-                     "type": "container",
-                     "style": { ...containerStyle, "paddingInline": "0", "paddingBlock": "0", "backgroundColor": "transparent" },
-                     "className": "border-right",
-                     "cmps": []
-                  },
-                  {
-                     "id": "c68gh4j",
-                     "type": "container",
-                     "style": { ...containerStyle, "paddingInline": "0", "paddingBlock": "0", "backgroundColor": "transparent" },
-                     "className": "border-bottom",
-                     "cmps": []
-                  },
-                  {
                      "id": "sd85fb41g5",
                      "type": "container",
                      "style": { ...containerStyle, "paddingInline": "0", "paddingBlock": "0", "backgroundColor": "transparent" },

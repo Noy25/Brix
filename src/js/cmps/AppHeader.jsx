@@ -37,13 +37,13 @@ export function AppHeader() {
         // HomePage :
         if (location.pathname === '/') {
             setHeaderClass('');
-            setPlaceholderClass('display-none');
+            setPlaceholderClass('hidden');
         }
 
         // PublishPage :
         else if (location.pathname.includes('/publish')) {
-            setHeaderClass('display-none');
-            setPlaceholderClass('display-none');
+            setHeaderClass('hidden');
+            setPlaceholderClass('hidden');
         }
 
         // EditorPage :
@@ -70,14 +70,14 @@ export function AppHeader() {
     return <>
 
         <header className={`main-header flex justify-between align-center ${headerClass + ' ' + scrollHeaderClass}`}>
-            <Link className="clean-link logo" to="/">
+            <Link className="logo" to="/">
                 <img src={logo} alt="no" />
             </Link>
 
             <nav className="nav-menu flex align-center">
-                <NavLink className="clean-link nav-link" to="/templates"> TEMPLATES</NavLink>
-                <NavLink className="clean-link nav-link" to="/editor"> EDITOR</NavLink>
-                <NavLink className="clean-link nav-link" to="/collection"> COLLECTION</NavLink>
+                <NavLink className="nav-link" to="/templates"> TEMPLATES</NavLink>
+                <NavLink className="nav-link" to="/editor"> EDITOR</NavLink>
+                <NavLink className="nav-link" to="/collection"> COLLECTION</NavLink>
             </nav>
 
 
@@ -101,6 +101,6 @@ export function AppHeader() {
 
 
         {/* Placeholder for the Editor Page positioning */}
-        <div className={`placeholder ${placeholderClass === 'display-none' ? 'display-none' : ''}`}></div>
+        <div className={`placeholder ${placeholderClass === 'hidden' ? 'hidden' : ''}`}></div>
     </>
 }

@@ -48,10 +48,10 @@ export function MobileHamburger({ user, shouldShowLogin, onLogout }) {
             {/* User */}
 
          </div>
-         <NavLink className="clean-link nav-link" to="/" onClick={onToggleMenu}> Home Page</NavLink>
-         <NavLink className="clean-link nav-link" to="/templates" onClick={onToggleMenu}> Templates</NavLink>
-         <NavLink className="clean-link nav-link" to="/editor" onClick={onToggleMenu}> Editor</NavLink>
-         <NavLink className="clean-link nav-link" to="/collection" onClick={onToggleMenu}> Collection</NavLink>
+         <NavLink className="nav-link" to="/" onClick={onToggleMenu}> Home Page</NavLink>
+         <NavLink className="nav-link" to="/templates" onClick={onToggleMenu}> Templates</NavLink>
+         <NavLink className="nav-link" to="/editor" onClick={onToggleMenu}> Editor</NavLink>
+         <NavLink className="nav-link" to="/collection" onClick={onToggleMenu}> Collection</NavLink>
 
       </nav>
    </div >

@@ -134,13 +134,14 @@ export function resetDraftWap() {
 // *** ELEMENT wap actions *** //
 
 
-export function removeElement(element) {
+export function removeElement() {
     return (dispatch, getState) => {
 
         let { wap } = getState().wapModule;
+        let { currElement } = getState().editorModule;
         wap = JSON.parse(JSON.stringify(wap));
 
-        wapService.findTarget(wap, element.id, (cmpsArr, idx) => cmpsArr.splice(idx, 1));
+        wapService.findTarget(wap, currElement.id, (cmpsArr, idx) => cmpsArr.splice(idx, 1));
         draftService.saveDraft(wap);
 
         if (wap.id) socketService.emit('update-wap', wap);
@@ -167,22 +168,23 @@ export function addElement(elementToAdd) {
     }
 }
 
-export function duplicateElement(element) {
+export function duplicateElement() {
     return (dispatch, getState) => {
 
         let { wap } = getState().wapModule;
-        const elementId = element.id;
+        let { currElement } = getState().editorModule;
         wap = JSON.parse(JSON.stringify(wap));
-        element = JSON.parse(JSON.stringify(element));
-        wapService.replaceIds(element);
+        currElement = JSON.parse(JSON.stringify(currElement));
+        const elementId = currElement.id;
+        wapService.replaceIds(currElement);
 
-        wapService.findTarget(wap, elementId, (cmpsArr, idx) => cmpsArr.splice(idx, 0, element));
+        wapService.findTarget(wap, elementId, (cmpsArr, idx) => cmpsArr.splice(idx, 0, currElement));
         draftService.saveDraft(wap);
 
         if (wap.id) socketService.emit('update-wap', wap);
 
         dispatch({ type: 'UPDATE_WAP', wap })
-        return element;
+        return currElement;
     }
 }
 

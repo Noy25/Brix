@@ -108,7 +108,7 @@ export function Login() {
 
                 </form>
 
-                <GoogleLogin className="google-login-real"
+                <GoogleLogin className="google-login"
                     clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                     buttonText="Continue with Google"
                     onSuccess={handleGoogleLogin}
