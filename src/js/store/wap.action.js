@@ -17,9 +17,7 @@ import { socketService } from '../services/socket.service.js';
 export function loadWap(wapId) {
     return async (dispatch) => {
 
-        // dispatch(loadingStart())
         const wap = await wapService.getById(wapId);
-        // dispatch(loadingDone())
 
         dispatch({ type: 'SET_WAP', wap });
     }
@@ -59,9 +57,10 @@ export function saveWap(cb) {
 
         const { wap } = getState().wapModule;
         const savedWap = await wapService.save(wap);
+        draftService.saveDraft(savedWap);
         if (cb) cb(savedWap._id);
-
-        // dispatch({ type: 'SAVE_WAP', wap }); // we can use this to add a key of "last saved" maybe
+        
+        dispatch({ type: 'SET_WAP', wap: savedWap });
     }
 }
 
@@ -133,7 +132,6 @@ export function resetDraftWap() {
 
 // *** ELEMENT wap actions *** //
 
-
 export function removeElement() {
     return (dispatch, getState) => {
 
@@ -183,11 +181,10 @@ export function duplicateElement() {
 
         if (wap.id) socketService.emit('update-wap', wap);
 
-        dispatch({ type: 'UPDATE_WAP', wap })
+        dispatch({ type: 'UPDATE_WAP', wap });
         return currElement;
     }
 }
-
 
 // Handles anything related to drag n drop including Adding/Removing elements
 export function switchElement(res) {
@@ -239,12 +236,13 @@ export function switchElement(res) {
 
 export function undo() {
     return async (dispatch, getState) => {
+        
         const { wapHistory } = getState().wapModule;
         const { currElement } = getState().editorModule;
 
-        if (!wapHistory.length) return
+        if (!wapHistory.length) return;
 
-        let prevWap = wapHistory.pop()
+        let prevWap = wapHistory.pop();
         draftService.saveDraft(prevWap);
 
         if (prevWap.id) socketService.emit('update-wap', prevWap);

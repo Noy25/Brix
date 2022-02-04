@@ -74,6 +74,5 @@ function _clearUserSession() {
 }
 
 function _getUserFromSession() {
-    const user = storageService.loadFromSession(LOGGEDIN_USER_STORAGE_KEY);
-    return user;
+    return storageService.loadFromSession(LOGGEDIN_USER_STORAGE_KEY);
 }

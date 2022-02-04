@@ -51,12 +51,11 @@ async function getById(wapId) {
 // Remove wap
 async function remove(wapId) {
     // Frontend Demo :
-    // return await asyncStorageService.remove(WAP_STORAGE_KEY, wapId);
+    // await asyncStorageService.remove(WAP_STORAGE_KEY, wapId);
 
     // Backend :
     try {
-        const removedWap = await httpService.delete(`wap/${wapId}`);
-        return removedWap;
+        await httpService.delete(`wap/${wapId}`);
     } catch (err) {
         throw err;
     }
