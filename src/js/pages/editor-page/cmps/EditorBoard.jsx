@@ -1,28 +1,27 @@
+// React
 import { useState, useEffect, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
-
-import { setCurrElement, updateCurrElementAttr } from '../../../store/editor.action'
-
+import { useDispatch, useSelector } from 'react-redux';
+// Actions
+import { setCurrElement } from '../../../store/editor.action';
+import { updateWap } from '../../../store/wap.action';
+// Cmps
+import { DynamicCmp } from './dynamic-cmp/DynamicCmp';
+// Assets
 import { Droppable } from 'react-beautiful-dnd';
 import { isEmpty } from "lodash";
 
-import { DynamicCmp } from './dynamic-cmp/DynamicCmp'
-import { Loader } from '../../../cmps/Loader.jsx'
-import { updateWap } from '../../../store/wap.action';
-
 
 export function EditorBoard({ placeholderProps }) {
+
    const dispatch = useDispatch();
    const sectionRef = useRef();
    const textRef = useRef();
-
-   const [mediaClass, setMediaClass] = useState('');
 
    const wap = useSelector(state => state.wapModule.wap);
    const currElement = useSelector(state => state.editorModule.currElement);
    const boardSize = useSelector(state => state.editorModule.boardSize);
 
-
+   const [mediaClass, setMediaClass] = useState('');
 
    useEffect(() => {
       window.addEventListener('resize', handleResize);
@@ -49,13 +48,15 @@ export function EditorBoard({ placeholderProps }) {
       if (editorWidth < 1000) classStr += 'media-1000 ';
       if (editorWidth < 1200) classStr += 'media-1200 ';
 
-      return classStr
+      return classStr;
    }
 
    const onSetCurrElement = (ev, cmp) => {
       ev.stopPropagation();
+
       if (textRef.current && (cmp.id !== currElement.id)) textRef.current.blur();
       dispatch(setCurrElement(cmp));
+
       if (sectionRef.current.offsetWidth < 600) {
          ev.target.scrollIntoView({
             behavior: 'auto',
@@ -77,13 +78,11 @@ export function EditorBoard({ placeholderProps }) {
    }
 
 
-
-   //RENDER
    if (!wap?.cmps) return <div> Loading...</div>
 
    return <Droppable droppableId='board'>
       {(provided, snapshot) => {
-         //No curr element
+         // No curr element
          if (!wap?.cmps?.length) return <div  {...provided.droppableProps}
             ref={provided.innerRef}
             className='editor-board'><div className="choose-template">
@@ -91,12 +90,19 @@ export function EditorBoard({ placeholderProps }) {
             </div>
          </div>
 
-         //Board
+         // Board
          return <section className={`editor-board ${getBoardSize()}`}
             {...provided.droppableProps}
             ref={provided.innerRef}>
             {wap.cmps.map((cmp, i) =>
-               <DynamicCmp textRef={textRef} key={i} idx={i} isPublished={false} onSetCurrElement={onSetCurrElement} cmp={cmp} currElementId={currElement?.id} mediaClass={mediaClass} handleTxtChange={handleTxtChange} />
+               <DynamicCmp
+                  textRef={textRef}
+                  key={i} idx={i}
+                  isPublished={false}
+                  onSetCurrElement={onSetCurrElement}
+                  cmp={cmp} currElementId={currElement?.id}
+                  mediaClass={mediaClass}
+                  handleTxtChange={handleTxtChange} />
             )}
 
             {/* Div for boardSize */}
@@ -116,7 +122,6 @@ export function EditorBoard({ placeholderProps }) {
                   }}
                />
             )}
-            {/* Placeholder */}
          </section>
       }}
    </Droppable >

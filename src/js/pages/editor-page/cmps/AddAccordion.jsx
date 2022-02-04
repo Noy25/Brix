@@ -1,21 +1,19 @@
+// React
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-
+// Services
+import { templateService } from '../../../services/template.service';
+// Actions
 import { addElement } from '../../../store/wap.action';
-
+// Assets
 import { Droppable, Draggable } from 'react-beautiful-dnd';
-
-// ACCORDION
+// Accordion
 import { styled } from '@mui/material/styles';
 import MuiAccordion from '@mui/material/Accordion';
 import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
-import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-import { templateService } from '../../../services/template.service';
-import { PersonalVideoRounded } from '@mui/icons-material';
-// ACCORDION
 
 
 export function AddAccordion() {
@@ -35,7 +33,7 @@ export function AddAccordion() {
         dispatch(addElement(elementToAdd));
     }
 
-    return (<Droppable
+    return <Droppable
         isDropDisabled={true}
         droppableId='sidebar'>
         {provided => {
@@ -50,8 +48,6 @@ export function AddAccordion() {
                         <AccordionSummary aria-controls={`panel${i + 1}d-content`} id={`panel${i + 1}d-header`}>
                             <SummaryTypography>{category.substring(4, category.length)}</SummaryTypography>
                         </AccordionSummary>
-
-
 
                         {/* Accordion items */}
                         <AccordionDetails>
@@ -75,39 +71,32 @@ export function AddAccordion() {
 
                     </Accordion>
                 })}
+
                 <div style={{ 'display': 'none' }}>
                     {provided.placeholder}
                 </div>
             </div>
         }}
     </Droppable >
-
-    )
 }
 
 
 
-
-
-
 // Accordion Styling
-
 const Accordion = styled((props) => (
     <MuiAccordion disableGutters elevation={0} square {...props} />
-))(({ theme }) => ({
+))(() => ({
     borderBottom: '1px solid rgba(120, 120, 120, .7)',
     background: 'transparent'
 }));
 
 // Accordion Summary Styling
-
 const AccordionSummary = styled((props) => (
     <MuiAccordionSummary
-        // expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '1.1rem', color: '#eee' }} />}
         expandIcon={<ArrowRightIcon sx={{ fontSize: '1.8rem' }} />}
         {...props}
     />
-))(({ theme }) => ({
+))(() => ({
     '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
         transform: 'rotate(90deg)',
     },
@@ -118,8 +107,7 @@ const AccordionSummary = styled((props) => (
 }));
 
 // Accordion Details Styling
-
-const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
+const AccordionDetails = styled(MuiAccordionDetails)(() => ({
     padding: '20px 8px',
     borderTop: '1px solid rgba(60, 60, 60, .5)',
     display: 'flex',
@@ -128,16 +116,9 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 // Typography Styling
-
-const SummaryTypography = styled(Typography)(({ theme }) => ({
-    // padding: '5px 0',
+const SummaryTypography = styled(Typography)(() => ({
     textTransform: 'capitalize',
     fontFamily: 'Montserrat',
     fontSize: '1rem',
     fontWeight: 500
-}));
-
-const StyledTypography = styled(Typography)(({ theme }) => ({
-    padding: `${theme.spacing(1)} 0`,
-    fontFamily: 'Montserrat',
 }));

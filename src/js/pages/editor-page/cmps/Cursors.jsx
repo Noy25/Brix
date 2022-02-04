@@ -1,9 +1,9 @@
+// React
 import { useEffect, useState } from 'react';
-
+// Services
 import { socketService } from '../../../services/socket.service';
 import { utilService } from '../../../services/util.service';
-
-import { FaMousePointer } from 'react-icons/fa';
+// Assets
 import { BsCursorFill } from 'react-icons/bs';
 
 
@@ -44,7 +44,6 @@ export function Cursors({ wapId }) {
     }
 
     const updateCursors = newCursor => {
-
         const cursorIdx = cursors.findIndex(cursor => cursor.id === newCursor.id);
         if (cursorIdx >= 0) {
             setCursors(prevCursors => {

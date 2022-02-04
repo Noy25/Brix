@@ -1,10 +1,10 @@
-export function WapTxt(props) {
-   const { cmp, onSetCurrElement, handleTxtChange, currElementId, style, isPublished, textRef } = props
+export function WapTxt({ cmp, onSetCurrElement, handleTxtChange, currElementId, style, isPublished, textRef }) {
 
    if (isPublished) {
       return <span>
          <p style={style}
-            className={cmp.className || ''}>
+            className={cmp.className || ''}
+         >
             {cmp.txt}
          </p>
       </span>

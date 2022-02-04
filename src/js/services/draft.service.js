@@ -7,39 +7,45 @@ export const draftService = {
     resetDraft,
 }
 
-const DRAFT_WAP_STORAGE_KEY = 'draft_wap'; // Draft Wap from Local Storage
 
+const DRAFT_WAP_STORAGE_KEY = 'draft_wap'; // Draft Wap from localStorage
 
 function saveDraft(wap) {
-    storageService.saveToStorage(DRAFT_WAP_STORAGE_KEY, wap);
+    _saveDraftToStorage(wap);
 }
 
 function loadDraft() {
-    let draftWap = storageService.loadFromStorage(DRAFT_WAP_STORAGE_KEY);
-
-    if (!draftWap) {
-        draftWap = {
-            "name": "new webApp",
-            "thumbnail": "",
-            "createdBy": {
-                "_id": "5e26e0b718a0891d4c995527",
-                "username": "Username"
-            },
-            "cmps": [],
-            "isPublished": false,
-            "isTemplate": false
-        }
-        saveDraft(draftWap);
-    }
-
+    const draftWap = _loadDraftFromStorage() || _createDraftWap();
     return draftWap;
 }
 
 function resetDraft() {
-    _removeDraft();
+    _removeDraftFromStorage();
     return loadDraft();
 }
 
-function _removeDraft() {
+function _createDraftWap() {
+    const draftWap = {
+        name: 'new webApp',
+        thumbnail: '',
+        cmps: [],
+        isPublished: false,
+        isTemplate: false
+    }
+
+    _saveDraftToStorage(draftWap);
+
+    return draftWap;
+}
+
+function _saveDraftToStorage(wap) {
+    storageService.saveToStorage(DRAFT_WAP_STORAGE_KEY, wap);
+}
+
+function _loadDraftFromStorage() {
+    return storageService.loadFromStorage(DRAFT_WAP_STORAGE_KEY);
+}
+
+function _removeDraftFromStorage() {
     storageService.removeFromStorage(DRAFT_WAP_STORAGE_KEY);
 }

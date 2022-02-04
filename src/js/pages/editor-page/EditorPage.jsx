@@ -1,19 +1,18 @@
+// React
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-
+// Services
 import { socketService } from '../../services/socket.service';
+// Actions
 import { loadDraftWap, switchElement, joinRoom, updateWapInRoom } from '../../store/wap.action';
-
+// Cmps
 import { EditorSidebar } from './cmps/EditorSidebar';
 import { EditorBoard } from './cmps/EditorBoard';
-import { SavePublishBtns } from './cmps/SavePublishBtns';
 import { Cursors } from './cmps/Cursors';
-
+// Assets
 import { DragDropContext } from 'react-beautiful-dnd';
 import { Droppable } from 'react-beautiful-dnd';
-
-
 
 
 export function EditorPage() {
@@ -24,27 +23,23 @@ export function EditorPage() {
    const [isDragActive, setDragActive] = useState(false);
    const [placeholderProps, setPlaceholderProps] = useState({});
 
-
    useEffect(() => {
       dispatch(loadDraftWap());
 
       // Socket initialization on connection happens inside Cursors.jsx component
-
       // User joined via share link :
       if (wapId) {
          dispatch(joinRoom(wapId));
       }
 
       // Every user listens to wap updates :
-      socketService.off('wap-updated'); // reset just in case
+      socketService.off('wap-updated');
       socketService.on('wap-updated', wapId => dispatch(updateWapInRoom(wapId)));
-
 
       return () => {
          // Reset states just in case of memory leak :
          setDragActive(false);
          setPlaceholderProps({});
-         // Clear socket on disconnection :
          socketService.off('wap-updated');
       }
    }, [])
@@ -53,25 +48,20 @@ export function EditorPage() {
    const getDraggedDom = draggableId => {
       const domQuery = `[data-rbd-drag-handle-draggable-id='${draggableId}']`;
       const draggedDOM = document.querySelector(domQuery);
-
       return draggedDOM;
    };
 
-   //DRAG START
+   // Drag Start
    const onDragStart = event => {
 
-      if (event.source.droppableId === 'board') {
-         setDragActive(true)
-      }
-      const draggedDOM = getDraggedDom(event.draggableId);
+      if (event.source.droppableId === 'board') setDragActive(true);
 
-      if (!draggedDOM) {
-         return;
-      }
+      const draggedDOM = getDraggedDom(event.draggableId);
+      if (!draggedDOM) return;
 
       const { clientHeight, clientWidth } = draggedDOM;
       const sourceIndex = event.source.index;
-      var clientY =
+      let clientY =
          parseFloat(window.getComputedStyle(draggedDOM.parentNode).paddingTop) +
          [...draggedDOM.parentNode.children]
             .slice(0, sourceIndex)
@@ -86,23 +76,16 @@ export function EditorPage() {
          clientHeight,
          clientWidth,
          clientY,
-         clientX: parseFloat(
-            window.getComputedStyle(draggedDOM.parentNode).paddingLeft
-         )
+         clientX: parseFloat(window.getComputedStyle(draggedDOM.parentNode).paddingLeft)
       });
-   };
+   }
 
-   //DRAG UPDATE
+   // Drag Update
    const onDragUpdate = event => {
-      if (!event.destination) {
-         return;
-      }
+      if (!event.destination) return;
 
       const draggedDOM = getDraggedDom(event.draggableId);
-
-      if (!draggedDOM) {
-         return;
-      }
+      if (!draggedDOM) return;
 
       const { clientHeight, clientWidth } = draggedDOM;
       const destinationIndex = event.destination.index;
@@ -115,10 +98,9 @@ export function EditorPage() {
       const updatedArray = [
          ...childrenArray.slice(0, destinationIndex),
          movedItem,
-         ...childrenArray.slice(destinationIndex + 1)
-      ];
+         ...childrenArray.slice(destinationIndex + 1)]
 
-      var clientY =
+      let clientY =
          parseFloat(window.getComputedStyle(draggedDOM.parentNode).paddingTop) +
          updatedArray.slice(0, destinationIndex).reduce((total, curr) => {
             const style = curr.currentStyle || window.getComputedStyle(curr);
@@ -131,30 +113,26 @@ export function EditorPage() {
          clientHeight,
          clientWidth,
          clientY,
-         clientX: parseFloat(
-            window.getComputedStyle(draggedDOM.parentNode).paddingLeft
-         )
+         clientX: parseFloat(window.getComputedStyle(draggedDOM.parentNode).paddingLeft)
       });
    };
 
-   //DRAG END
+   // Drag End
    const onDragEnd = (res) => {
       const { destination, source } = res;
       if (!destination) return;
 
-      if (destination.droppableId === 'sidebar') return setDragActive(false)
-
+      if (destination.droppableId === 'sidebar') return setDragActive(false);
 
       if (destination.droppableId === source.droppableId &&
          destination.index === source.index) return setDragActive(false);
 
       if (source.droppableId === 'sidebar' &&
-         destination.droppableId === 'garbage') return setDragActive(false)
+         destination.droppableId === 'garbage') return setDragActive(false);
 
-      dispatch(switchElement(res))
-      setDragActive(false)
+      dispatch(switchElement(res));
+      setDragActive(false);
    }
-
 
 
    return <DragDropContext
@@ -173,8 +151,6 @@ export function EditorPage() {
                   ref={provided.innerRef}>&times;</div>
             }}
          </Droppable>
-
-         {/* <img src="https://www.apple.com/v/iphone-13/d/images/overview/chip/ar_hardware__fklaa9gj5diu_large.png" alt="iphone" className='iphone-frame' /> */}
       </main >
 
       <Cursors wapId={wapId} />

@@ -1,12 +1,7 @@
-export function WapBtn(props) {
-      const { cmp, onSetCurrElement, handleTxtChange, style, currElementId, isPublished, textRef } = props
-
+export function WapBtn({ cmp, onSetCurrElement, handleTxtChange, style, currElementId, isPublished, textRef }) {
       if (isPublished) {
             return <span>
-                  <a style={style}
-                        href={cmp.url}
-                        className={cmp.className || ''}>
-                        {cmp.txt}</a>
+                  <a style={style} href={cmp.url} className={cmp.className || ''}>{cmp.txt}</a>
             </span>
       }
 

@@ -1,23 +1,12 @@
+// React
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+// Custom Hooks
 import { usePrevious } from '../../../hooks/usePrevious';
-
-import { styled } from '@mui/material/styles';
-import MuiAccordion from '@mui/material/Accordion';
-import MuiAccordionSummary from '@mui/material/AccordionSummary';
-import MuiAccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
-import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
-import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-import { FaUndoAlt } from "react-icons/fa";
-import { IoDuplicateSharp } from "react-icons/io5";
-import { FcDeleteRow } from "react-icons/fc";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
+// Actions
 import { updateWap, removeElement, duplicateElement, undo } from '../../../store/wap.action';
 import { updateCurrElementStyle, updateCurrElementAttr, uploadImage } from '../../../store/editor.action';
-
+// Cmps
 import { TextStyles } from './TextStyles';
 import { ImageStyles } from './ImageStyles';
 import { ButtonStyles } from './BtnStyles';
@@ -25,18 +14,22 @@ import { SectionStyle } from './SectionStyle';
 import { BgcStyles } from './BgcStyles.jsx';
 import { VideoStyles } from './VideoStyles';
 import { InputStyles } from './InputStyles';
-
+// Assets
+import 'react-toastify/dist/ReactToastify.css';
+import MuiAccordion from '@mui/material/Accordion';
+import MuiAccordionSummary from '@mui/material/AccordionSummary';
+import MuiAccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import { styled } from '@mui/material/styles';
+import { FaUndoAlt } from "react-icons/fa";
+import { IoDuplicateSharp } from "react-icons/io5";
+import { FcDeleteRow } from "react-icons/fc";
 
 
 export function EditAccordion() {
 
     const dispatch = useDispatch();
-
-    const [expanded, setExpanded] = useState('panel1');
-
-    const handleChange = (panel) => (event, newExpanded) => {
-        setExpanded(newExpanded ? panel : false);
-    };
 
     let currElement = useSelector(state => state.editorModule.currElement)
     const currHistoryLength = useSelector(state => state.wapModule.wapHistory.length)
@@ -44,55 +37,43 @@ export function EditAccordion() {
     const prevElement = usePrevious(currElement);
     const prevHistoryLength = usePrevious(currHistoryLength);
 
+    const [expanded, setExpanded] = useState('panel1');
+
     useEffect(() => {
         if (currElement?.id === prevElement?.id &&
             prevHistoryLength <= currHistoryLength) {
             dispatch(updateWap(currElement));
         }
         window.addEventListener('keydown', onRemoveElementByKey);
-
-        // Accordions Auto-Open :
         openAccordion();
 
         return () => window.removeEventListener('keydown', onRemoveElementByKey);
     }, [currElement])
 
+    const handleChange = (panel) => (event, newExpanded) => {
+        setExpanded(newExpanded ? panel : false);
+    };
 
     const openAccordion = () => {
         if (!currElement || !prevElement) return;
         if (currElement.type === prevElement.type) return;
 
         switch (currElement.type) {
-            case 'txt':
-                setExpanded('panel1');
-                break;
-            case 'img':
-                setExpanded('panel2');
-                break;
-            case 'btn':
-                setExpanded('panel3');
-                break;
-            case 'container':
-                setExpanded('panel4');
-                break;
-            case 'video':
-                setExpanded('panel6');
-                break;
-            case 'input':
-                setExpanded('panel7');
-                break;
-            default:
+            case 'txt': return setExpanded('panel1');
+            case 'img': return setExpanded('panel2');
+            case 'btn': return setExpanded('panel3');
+            case 'container': return setExpanded('panel4');
+            case 'video': return setExpanded('panel6');
+            case 'input': return setExpanded('panel7');
         }
     }
-
-    // Edit functions
 
     const onChangeStyle = ({ target }) => {
         const style = {
             styleName: target.name,
             styleValue: target.value
         }
-        dispatch(updateCurrElementStyle(currElement, style))
+        dispatch(updateCurrElementStyle(currElement, style));
     }
 
     const onChangeColor = (ev, name) => {
@@ -101,10 +82,10 @@ export function EditAccordion() {
             styleValue: ev.hex
         }
         if (name === 'backgroundColor') {
-            currElement = JSON.parse(JSON.stringify(currElement))
+            currElement = JSON.parse(JSON.stringify(currElement));
             currElement.style.backgroundImage = '';
         }
-        dispatch(updateCurrElementStyle(currElement, style))
+        dispatch(updateCurrElementStyle(currElement, style));
     }
 
     const onChangeAttr = ({ target }) => {
@@ -112,11 +93,11 @@ export function EditAccordion() {
             attrName: target.name,
             attrValue: target.value
         }
-        dispatch(updateCurrElementAttr(currElement, attr))
+        dispatch(updateCurrElementAttr(currElement, attr));
     }
 
     const onUploadImg = (ev, isBackground) => {
-        dispatch(uploadImage(ev, currElement, isBackground))
+        dispatch(uploadImage(ev, currElement, isBackground));
     }
 
     const onRemoveElement = () => {
@@ -129,7 +110,6 @@ export function EditAccordion() {
         dispatch(duplicateElement(currElement));
     }
 
-
     const onUndo = () => {
         dispatch(undo());
     }
@@ -137,7 +117,6 @@ export function EditAccordion() {
     const onRemoveElementByKey = ({ key }) => {
         if (key === 'Delete') onRemoveElement();
     }
-
 
 
     return (
@@ -226,27 +205,21 @@ export function EditAccordion() {
 }
 
 
-//////////////////////////////////////////////////////////////// STYLES ///////////////////////////////////////////////////////////////////////////
-
-
 // Accordion Styling
-
 const Accordion = styled((props) => (
     <MuiAccordion disableGutters elevation={0} square {...props} />
-))(({ theme }) => ({
+))(() => ({
     borderBottom: '1px solid rgba(120, 120, 120, .7)',
     background: 'transparent',
 }));
 
 // Accordion Summary Styling
-
 const AccordionSummary = styled((props) => (
     <MuiAccordionSummary
-        // expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '1.1rem', color: '#eee' }} />}
         expandIcon={<ArrowRightIcon sx={{ fontSize: '1.8rem' }} />}
         {...props}
     />
-))(({ theme }) => ({
+))(() => ({
     '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
         transform: 'rotate(90deg)',
     },
@@ -257,22 +230,16 @@ const AccordionSummary = styled((props) => (
 }));
 
 // Accordion Details Styling
-
-const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
+const AccordionDetails = styled(MuiAccordionDetails)(() => ({
     padding: '20px 8px',
     borderTop: '1px solid rgba(60, 60, 60, .5)',
 }));
 
 // Typography Styling
-
-const SummaryTypography = styled(Typography)(({ theme }) => ({
+const SummaryTypography = styled(Typography)(() => ({
     padding: '5px 0',
     textTransform: 'capitalize',
     fontFamily: 'Montserrat',
     fontSize: '1rem',
     fontWeight: 500
-}));
-
-const StyledTypography = styled(Typography)(({ theme }) => ({
-    padding: `${theme.spacing(1)} 0`,
 }));

@@ -1,12 +1,11 @@
-export function WapImg(props) {
-   const { cmp, onSetCurrElement, currElementId, style, isPublished } = props
+export function WapImg({ cmp, onSetCurrElement, currElementId, style, isPublished }) {
 
    if (isPublished) {
       return <span>
          <img style={style}
             className={cmp.className || ''}
             src={cmp.url}
-            alt="Missing img" />
+            alt="Missing image" />
       </span>
    }
 

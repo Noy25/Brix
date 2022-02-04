@@ -10,7 +10,7 @@ const BASE_URL = process.env.NODE_ENV === 'production'
 export const socketService = createSocketService();
 
 
-// socketService.setup(); -> this doesn't work on browser open for some reason, need to call this from a component thats mounting
+// socketService.setup(); -> Socket initialization is done from within the necessary component
 
 
 function createSocketService() {

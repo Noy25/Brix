@@ -1,9 +1,8 @@
-export function WapVideo(props) {
-   const { cmp, onSetCurrElement, handleTxtChange, style, currElementId, isPublished } = props
+export function WapVideo({ cmp, onSetCurrElement, style, currElementId, isPublished }) {
 
    if (isPublished) {
       return <span>
-         <iframe title="published" width="400" height="300"
+         <iframe title="published" width={cmp.width || '400'} style={style}
             className={`${cmp.id === currElementId ? 'edit-active' : ''} ${cmp.className || ''}`}
             src={cmp.url}>
          </iframe>
@@ -18,5 +17,4 @@ export function WapVideo(props) {
          src={cmp.url}>
       </iframe>
    </span>
-
 }
