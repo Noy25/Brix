@@ -1,15 +1,13 @@
+// React
 import { useState } from 'react';
-
+// Assets
 import { ChromePicker } from 'react-color';
 import { IoMdColorFilter } from "react-icons/io";
-
 
 
 export function ColorInput({ currColor, onChange }) {
 
    const [showColorInput, toggleColorInput] = useState(false);
-
-   // currColor = currColor || '#0e0e0e'
 
    const onToggleColorInput = (ev) => {
       ev.preventDefault();
@@ -28,6 +26,7 @@ export function ColorInput({ currColor, onChange }) {
    }
 
    return <div className='color-input-container'>
+
       <button className='color-input'
          onClick={onToggleColorInput}
          style={{ 'backgroundColor': currColor }}><IoMdColorFilter />

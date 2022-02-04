@@ -1,26 +1,25 @@
+// React
 import { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
+// Actions
 import { loadWap } from '../../store/wap.action'
 import { loadingStart, loadingDone } from '../../store/system.action'
+// Cmps
 import { DynamicCmp } from '../editor-page/cmps/dynamic-cmp/DynamicCmp';
-import { wapService } from '../../../js/services/wap.service';
 import { Loader } from '../../cmps/Loader'
-
-
-
 
 
 export function PublishPage() {
 
-    const { wapId } = useParams();
     const dispatch = useDispatch();
+    const { wapId } = useParams();
     const sectionRef = useRef();
-
-    const [mediaClass, setMediaClass] = useState('');
 
     const wap = useSelector(state => state.wapModule.wap);
     const isLoading = useSelector(state => state.systemModule.isLoading);
+
+    const [mediaClass, setMediaClass] = useState('');
 
     useEffect(() => {
         dispatch(loadWap(wapId));
@@ -29,8 +28,6 @@ export function PublishPage() {
 
         return () => window.removeEventListener('resize', getMediaClass);
     }, [])
-
-
 
 
     const handleResize = () => {
@@ -57,13 +54,13 @@ export function PublishPage() {
         dispatch(loadingDone())
     }
 
+
     if (isLoading) return <Loader color={'#1b1b1b'} />
-    return (
-        <div className='publish-page'>
-            {wap && wap.cmps.map((cmp, i) => {
-                return <DynamicCmp key={i} cmp={cmp} isPublished={true} mediaClass={mediaClass} />
-            })}
-            <div ref={sectionRef}></div>
-        </div>
-    )
+
+    return <div className='publish-page'>
+        {wap && wap.cmps.map((cmp, i) => {
+            return <DynamicCmp key={i} cmp={cmp} isPublished={true} mediaClass={mediaClass} />
+        })}
+        <div ref={sectionRef}></div>
+    </div>
 }

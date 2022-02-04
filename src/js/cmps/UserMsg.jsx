@@ -1,14 +1,11 @@
+// React
+import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useSelector } from 'react-redux'
-import { useEffect } from 'react'
-
-
-
 
 
 export function UserMsg() {
-    const att = { position: "bottom-center", hideProgressBar: false, closeOnClick: true, pauseOnHover: true, draggable: true, progress: undefined, className: "toast" }
 
     const userMsg = useSelector(state => state.userModule.userMsg);
 
@@ -24,20 +21,19 @@ export function UserMsg() {
     }, [userMsg])
 
 
+    const att = { position: "bottom-center", hideProgressBar: false, closeOnClick: true, pauseOnHover: true, draggable: true, progress: undefined, className: "toast" }
+
     if (!userMsg) return ''
 
-    return (
-        <ToastContainer
-            style={{ top: 0 }}
-            className="toast"
-            style={{ zIndex: 1200 }}
-            position="bottom-center"
-            autoClose={userMsg.timer}
-            hideProgressBar={false}
-            newestOnTop
-            closeOnClick
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover />
-    )
+    return <ToastContainer
+        style={{ top: 0, zIndex: 1200 }}
+        className="toast"
+        position="bottom-center"
+        autoClose={userMsg.timer}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover />
 }

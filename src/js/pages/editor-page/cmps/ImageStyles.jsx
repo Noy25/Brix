@@ -1,22 +1,12 @@
-
-import * as React from 'react';
+// MUI
 import Slider from '@mui/material/Slider';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
+// Assets
 import { FaUpload } from "react-icons/fa";
-import TextField from '@mui/material/TextField';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+
 
 const color1 = '#1d375a';
-
-const theme = createTheme({
-   palette: {
-      primary: {
-         main: '#ffffff'
-      },
-   }
-})
-
 
 const PrettoSlider = styled(Slider)({
    color: color1,
@@ -58,12 +48,13 @@ const PrettoSlider = styled(Slider)({
 });
 
 
-
 export function ImageStyles({ element, onChangeStyle, onUploadImg, onChangeAttr }) {
+
    return <div className="flex column style-inputs">
+
       <label >Border Radius
          <Box >
-            <Box sx={{ m: 3 }} sx={{ width: 100 }} />
+            <Box sx={{ m: 3, width: 100 }} />
             <PrettoSlider
                valueLabelDisplay="auto"
                aria-label="pretto slider"
@@ -71,9 +62,10 @@ export function ImageStyles({ element, onChangeStyle, onUploadImg, onChangeAttr 
             />
          </Box>
       </label>
+
       <label >Size
          <Box >
-            <Box sx={{ m: 3 }} sx={{ width: 100 }} />
+            <Box sx={{ m: 3, width: 100 }} />
             <PrettoSlider
                valueLabelDisplay="auto"
                aria-label="pretto slider"
@@ -90,7 +82,6 @@ export function ImageStyles({ element, onChangeStyle, onUploadImg, onChangeAttr 
          <FaUpload />
          <input style={{ display: 'none' }} onChange={(ev) => onUploadImg(ev, false)} type="file" />
       </label>
-
 
    </div>
 } 

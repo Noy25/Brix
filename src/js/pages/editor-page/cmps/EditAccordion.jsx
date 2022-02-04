@@ -92,7 +92,7 @@ export function EditAccordion() {
             styleName: target.name,
             styleValue: target.value
         }
-        dispatch(updateCurrElementStyle(currElement, style))
+        dispatch(updateCurrElementStyle(style))
     }
 
     const onChangeColor = (ev, name) => {
@@ -100,11 +100,7 @@ export function EditAccordion() {
             styleName: name,
             styleValue: ev.hex
         }
-        if (name === 'backgroundColor') {
-            currElement = JSON.parse(JSON.stringify(currElement))
-            currElement.style.backgroundImage = '';
-        }
-        dispatch(updateCurrElementStyle(currElement, style))
+        dispatch(updateCurrElementStyle(style))
     }
 
     const onChangeAttr = ({ target }) => {
@@ -112,7 +108,7 @@ export function EditAccordion() {
             attrName: target.name,
             attrValue: target.value
         }
-        dispatch(updateCurrElementAttr(currElement, attr))
+        dispatch(updateCurrElementAttr(attr))
     }
 
     const onUploadImg = (ev, isBackground) => {

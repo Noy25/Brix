@@ -1,8 +1,10 @@
-import * as React from 'react';
+// MUI
 import Slider from '@mui/material/Slider';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
+// Asses
 import { FaUpload } from "react-icons/fa";
+
 
 const color1 = '#1d375a';
 
@@ -46,35 +48,40 @@ const PrettoSlider = styled(Slider)({
 });
 
 
-
 export function SectionStyle({ element, onChangeStyle, onUploadImg }) {
+
     return <div className="flex column style-inputs">
+
         <label> Set Height
             <Box >
-                <Box sx={{ m: 3 }} sx={{ width: 100 }} />
+                <Box sx={{ m: 3, width: 100 }} />
                 <PrettoSlider
                     valueLabelDisplay="auto"
                     aria-label="pretto slider"
                     min={0} max={200} onChange={onChangeStyle} name='paddingBlock' value={+element.style['paddingBlock']} />
             </Box>
         </label>
+
         <label> Side Spacing
             <Box >
-                <Box sx={{ m: 3 }} sx={{ width: 100 }} />
+                <Box sx={{ m: 3, width: 100 }} />
                 <PrettoSlider
                     valueLabelDisplay="auto"
                     aria-label="pretto slider"
                     min={0} max={150} onChange={onChangeStyle} name='paddingInline' value={+element.style['paddingInline']} />
             </Box>
         </label>
+
         <label>Image link
             <input className="url-input" onChange={onChangeStyle} type="url" name='backgroundImage' />
         </label>
+
         <label className="upload-img-label flex" >
             Upload Image
             <input onChange={(ev) => onUploadImg(ev, true)} type="file" />
             <div className='upload-img-btn' ><FaUpload /></div>
         </label>
+
     </div>
 }
 

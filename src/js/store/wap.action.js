@@ -4,9 +4,6 @@ import { templateService } from '../services/template.service.js';
 import { utilService } from '../services/util.service.js';
 import { socketService } from '../services/socket.service.js';
 
-import { loadingStart, loadingDone } from './system.action'
-
-
 
 // *** KEY NOTES *** //
 // 1. To load a wap to the editor page, we use getById.
@@ -19,9 +16,11 @@ import { loadingStart, loadingDone } from './system.action'
 // Load wap from USER collection to editor page
 export function loadWap(wapId) {
     return async (dispatch) => {
+
         // dispatch(loadingStart())
         const wap = await wapService.getById(wapId);
         // dispatch(loadingDone())
+
         dispatch({ type: 'SET_WAP', wap });
     }
 }
@@ -29,19 +28,23 @@ export function loadWap(wapId) {
 // Load wap from TEMPLATE collection to editor page
 export function loadWapTemplate(wapTemplateId) {
     return (dispatch) => {
+
         let wap = templateService.getWapTemplateById(wapTemplateId);
         wap = JSON.parse(JSON.stringify(wap));
         wapService.replaceIds(wap);
         if (wap._id) delete wap._id;
         draftService.saveDraft(wap);
+
         dispatch({ type: 'SET_WAP', wap });
     }
 }
 
 export function updateWap(elementToUpdate) {
     return (dispatch, getState) => {
+
         let { wap } = getState().wapModule;
         wap = JSON.parse(JSON.stringify(wap));
+
         wapService.findTarget(wap, elementToUpdate.id, (cmpsArr, idx) => cmpsArr[idx] = elementToUpdate);
         draftService.saveDraft(wap);
 
@@ -53,6 +56,7 @@ export function updateWap(elementToUpdate) {
 
 export function saveWap(cb) {
     return async (dispatch, getState) => {
+
         const { wap } = getState().wapModule;
         const savedWap = await wapService.save(wap);
         if (cb) cb(savedWap._id);
@@ -66,26 +70,30 @@ export function saveWap(cb) {
 
 export function createRoom(redirect) {
     return (dispatch, getState) => {
+
         const { wap } = getState().wapModule;
         let { user } = getState().userModule;
 
         wap.id = utilService.getRandomId();
         let nickname = user ? user.nickname : 'Guest';
-
         draftService.saveDraft(wap);
-        dispatch({ type: 'SET_WAP', wap });
+
         socketService.emit('create-room', { wap, nickname });
+
+        dispatch({ type: 'SET_WAP', wap });
 
         const BASE_URL = process.env.NODE_ENV === 'production'
             ? `https://webzone-app.herokuapp.com/editor/${wap.id}`
             : `localhost:3000/editor/${wap.id}`
         navigator.clipboard.writeText(BASE_URL);
+
         redirect(wap.id);
     }
 }
 
 export function joinRoom(wapId) {
     return (dispatch, getState) => {
+
         let { user } = getState().userModule;
         let nickname = user ? user.nickname : 'Guest';
 
@@ -108,6 +116,7 @@ export function updateWapInRoom(wap) {
 
 export function loadDraftWap() {
     return (dispatch) => {
+
         const wap = draftService.loadDraft();
         dispatch({ type: 'SET_WAP', wap });
     }
@@ -115,6 +124,7 @@ export function loadDraftWap() {
 
 export function resetDraftWap() {
     return (dispatch) => {
+
         const wap = draftService.resetDraft();
         dispatch({ type: 'SET_WAP', wap });
     }
@@ -126,12 +136,15 @@ export function resetDraftWap() {
 
 export function removeElement(element) {
     return (dispatch, getState) => {
+
         let { wap } = getState().wapModule;
         wap = JSON.parse(JSON.stringify(wap));
-        wapService.findTarget(wap, element.id, (cmpsArr, idx) => cmpsArr.splice(idx, 1));
 
+        wapService.findTarget(wap, element.id, (cmpsArr, idx) => cmpsArr.splice(idx, 1));
         draftService.saveDraft(wap);
+
         if (wap.id) socketService.emit('update-wap', wap);
+
         dispatch({ type: 'UPDATE_WAP', wap });
     }
 }
@@ -143,10 +156,12 @@ export function addElement(elementToAdd) {
         wap = JSON.parse(JSON.stringify(wap));
         elementToAdd = JSON.parse(JSON.stringify(elementToAdd));
         wapService.replaceIds(elementToAdd);
-        wap.cmps.push(elementToAdd);
 
+        wap.cmps.push(elementToAdd);
         draftService.saveDraft(wap);
+
         if (wap.id) socketService.emit('update-wap', wap);
+
         dispatch({ type: 'UPDATE_WAP', wap });
         return elementToAdd;
     }
@@ -154,15 +169,18 @@ export function addElement(elementToAdd) {
 
 export function duplicateElement(element) {
     return (dispatch, getState) => {
+
         let { wap } = getState().wapModule;
-        wap = JSON.parse(JSON.stringify(wap));
         const elementId = element.id;
+        wap = JSON.parse(JSON.stringify(wap));
         element = JSON.parse(JSON.stringify(element));
         wapService.replaceIds(element);
-        wapService.findTarget(wap, elementId, (cmpsArr, idx) => cmpsArr.splice(idx, 0, element));
 
+        wapService.findTarget(wap, elementId, (cmpsArr, idx) => cmpsArr.splice(idx, 0, element));
         draftService.saveDraft(wap);
+
         if (wap.id) socketService.emit('update-wap', wap);
+
         dispatch({ type: 'UPDATE_WAP', wap })
         return element;
     }
@@ -186,8 +204,6 @@ export function switchElement(res) {
         // wapService.findTarget(wap, destination.droppableId, (cmpsArr, idx) => {
         //     cmpsArr[idx][destination.index] = draggedElement
         // })
-        // console.log('destination', destination);
-        // console.log('source', source);
 
 
         // Just into the board
@@ -225,11 +241,12 @@ export function undo() {
         const { currElement } = getState().editorModule;
 
         if (!wapHistory.length) return
-        let prevWap = wapHistory.pop()
-        // prevWap = JSON.parse(JSON.stringify(prevWap));
 
+        let prevWap = wapHistory.pop()
         draftService.saveDraft(prevWap);
+
         if (prevWap.id) socketService.emit('update-wap', prevWap);
+
         dispatch({ type: 'UNDO_WAP', wap: prevWap, wapHistory });
 
         if (currElement) wapService.findTarget(prevWap, currElement.id, (cmpsArr, idx) => {

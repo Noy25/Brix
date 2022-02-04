@@ -1,22 +1,19 @@
-import * as React from 'react';
-import { FaAlignLeft } from 'react-icons/fa';
-import { FaAlignCenter } from 'react-icons/fa';
-import { FaAlignRight } from 'react-icons/fa';
-import { MdOutlineColorLens } from 'react-icons/md';
-
-import { TwitterPicker, CirclePicker } from 'react-color';
-
-
+// Cmps
+import { ColorInput } from '../../../cmps/ColorInput';
+// React-color
+import { CirclePicker } from 'react-color';
+// MUI
 import Slider from '@mui/material/Slider';
-import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-
-import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { styled } from '@mui/material/styles';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { ColorInput } from '../../../cmps/ColorInput';
+// Assets
+import { FaAlignLeft } from 'react-icons/fa';
+import { FaAlignCenter } from 'react-icons/fa';
+import { FaAlignRight } from 'react-icons/fa';
 
 const color1 = '#1d375a';
 
@@ -27,8 +24,7 @@ const colors = ['#ffffff00', '#1b1b1b', '#3a3a3a', '#707070', '#a0a0a0', '#d6d6d
 const theme = createTheme({
    palette: {
       primary: {
-         // main: color1,
-         main: '#000000'
+         main: '#000011'
       },
    }
 })
@@ -78,6 +74,7 @@ const PrettoSlider = styled(Slider)({
 export function TextStyles({ elementStyle, onChangeStyle, onChangeColor }) {
 
    return <div className="flex column style-inputs">
+
       <div>
          Align
          <div className="flex btns-container align">
@@ -86,6 +83,7 @@ export function TextStyles({ elementStyle, onChangeStyle, onChangeColor }) {
             <button onClick={() => onChangeStyle({ target: { name: 'textAlign', value: 'end' } })} className={elementStyle.textAlign === 'end' ? 'active' : 'muted'}><FaAlignRight /></button>
          </div>
       </div>
+
       <div>
          Decoration
          <div className='flex btns-container decorations'>
@@ -94,18 +92,20 @@ export function TextStyles({ elementStyle, onChangeStyle, onChangeColor }) {
             <button onClick={() => onChangeStyle({ target: { name: 'textDecoration', value: (elementStyle.textDecoration === 'underline') ? 'none' : 'underline' } })} className={elementStyle.textDecoration === 'underline' ? 'active' : 'muted'}>U</button>
          </div>
       </div>
+
       <label>Font Size
          <Box >
-            <Box sx={{ m: 3 }} sx={{ width: 100 }} />
+            <Box sx={{ m: 3, width: 100 }} />
             <PrettoSlider
                valueLabelDisplay="auto"
                aria-label="pretto slider"
                min={0} max={100} onChange={onChangeStyle} name='fontSize' value={+elementStyle.fontSize} />
          </Box>
       </label>
+
       <label>Letter Spacing
          <Box >
-            <Box sx={{ m: 3 }} sx={{ width: 100 }} />
+            <Box sx={{ m: 3, width: 100 }} />
             <PrettoSlider
                valueLabelDisplay="auto"
                aria-label="pretto slider"
@@ -126,8 +126,8 @@ export function TextStyles({ elementStyle, onChangeStyle, onChangeColor }) {
                </FormControl>
             </Box>
          </ThemeProvider>
-
       </label>
+
       <label>Font Family
          <ThemeProvider theme={theme}>
             <Box sx={{ minWidth: 120 }}>
@@ -149,10 +149,11 @@ export function TextStyles({ elementStyle, onChangeStyle, onChangeColor }) {
             </Box>
          </ThemeProvider>
       </label>
+
       <div className='color-picker'>Color
          <ColorInput currColor={elementStyle.color} onChange={(ev) => onChangeColor(ev, 'color')} />
          <CirclePicker colors={colors} width={'100%'} onChange={(ev) => onChangeColor(ev, 'color')} triangle={'hide'} />
       </div>
-      {/* <input type="color" style={{ width: 30, height: 30, marginRight: '1px' }} onChange={onChangeStyle} name='color' value={elementStyle.color} /> */}
+
    </div>
 }

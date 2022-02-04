@@ -1,9 +1,12 @@
+// React
 import { useState } from 'react';
+// Cmps
 import { Screen } from './Screen';
 
 // EXAMPLE FOR PROPS CAN BE FOUND BELOW THE JSX.
 export function UserModal(props) {
-
+    const { mainTxt, subTxt, btnTxtCancel, handleCbCancel, btnTxt_1, handleCb_1, btnTxt_2, handleCb_2,
+        type, handleSubmitCb, btnSubmitTxt, inputType_1, inputName_1, inputPlaceholder_1 } = props
 
     const [inputsValues, setInputsValues] = useState({});
 
@@ -13,35 +16,33 @@ export function UserModal(props) {
     }
 
 
-    return (
-        <Screen cb={props.handleCbCancel}>
+    return <Screen cb={handleCbCancel}>
 
-            <div className="user-modal" onClick={ev => ev.stopPropagation()}>
+        <div className="user-modal" onClick={ev => ev.stopPropagation()}>
 
-                {props.mainTxt &&
-                    <h2 className="main-txt">{props.mainTxt}</h2>}
+            {mainTxt &&
+                <h2 className="main-txt">{mainTxt}</h2>}
 
-                {props.subTxt &&
-                    <p className="sub-txt">{props.subTxt}</p>}
+            {subTxt &&
+                <p className="sub-txt">{subTxt}</p>}
 
-                {props.type === 'confirm' &&
-                    <div className="btns-container">
-                        {props.btnTxt_1 && <button className="btn-1" onClick={props.handleCb_1}>{props.btnTxt_1}</button>}
-                        {props.btnTxt_2 && <button className="btn-2" onClick={props.handleCb_2}>{props.btnTxt_2}</button>}
-                        {props.btnTxtCancel && <button className="btn-cancel" onClick={props.handleCbCancel}>{props.btnTxtCancel}</button>}
-                        {/* <button className="btn-optional" onClick={props.handleOptionalCb}>{props.btnOptionalTxt}</button> */}
-                    </div>}
+            {type === 'confirm' &&
+                <div className="btns-container">
+                    {btnTxt_1 && <button className="btn-1" onClick={handleCb_1}>{btnTxt_1}</button>}
+                    {btnTxt_2 && <button className="btn-2" onClick={handleCb_2}>{btnTxt_2}</button>}
+                    {btnTxtCancel && <button className="btn-cancel" onClick={handleCbCancel}>{btnTxtCancel}</button>}
+                    {/* <button className="btn-optional" onClick={ handleOptionalCb}>{ btnOptionalTxt}</button> */}
+                </div>}
 
-                {props.type === 'form' &&
-                    <form onSubmit={(ev) => props.handleSubmitCb(ev, inputsValues)}>
-                        <input type={props.inputType_1} name={props.inputName_1} onChange={handleChange} placeholder={props.inputPlaceholder_1}></input>
-                        <button className="submit">{props.btnSubmitTxt}</button>
-                    </form>}
+            {type === 'form' &&
+                <form onSubmit={(ev) => handleSubmitCb(ev, inputsValues)}>
+                    <input type={inputType_1} name={inputName_1} onChange={handleChange} placeholder={inputPlaceholder_1}></input>
+                    <button className="submit">{btnSubmitTxt}</button>
+                </form>}
 
-            </div>
+        </div>
 
-        </Screen>
-    )
+    </Screen>
 }
 
 
