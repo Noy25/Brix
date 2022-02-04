@@ -2,7 +2,6 @@ import { utilService } from './util.service.js';
 
 // Frontend Demo :
 import { asyncStorageService } from './async-storage.service.js';
-
 // Backend :
 import { httpService } from "./http.service";
 
@@ -19,9 +18,6 @@ export const wapService = {
 
 
 const WAP_STORAGE_KEY = 'wap'; // User saved/published waps. This will be wap collection in wap_db
-
-
-// *** DEMO Axios Requests *** //
 
 
 // Get waps
@@ -48,7 +44,7 @@ async function getById(wapId) {
         const wap = await httpService.get(`wap/${wapId}`);
         return wap;
     } catch (err) {
-
+        throw err;
     }
 }
 
@@ -62,7 +58,7 @@ async function remove(wapId) {
         const removedWap = await httpService.delete(`wap/${wapId}`);
         return removedWap;
     } catch (err) {
-
+        throw err;
     }
 }
 
@@ -86,7 +82,7 @@ async function save(wapToSave) {
             const updatedWap = await httpService.put(`wap/${wapToSave._id}`, wapToSave);
             return updatedWap;
         } catch (err) {
-
+            throw err;
         }
     } else {
         // Add
@@ -94,22 +90,20 @@ async function save(wapToSave) {
             const addedWap = await httpService.post('wap', wapToSave);
             return addedWap;
         } catch (err) {
-
+            throw err;
         }
     }
 }
 
-
 // *** Wap Utils *** //
-
 
 // Find any cmp inside the wap by recurssion
 function findTarget(data, elementId, cb) {
     if (!data.cmps) return;
     const elementIdx = data.cmps.findIndex(cmp => cmp.id === elementId);
     if (elementIdx > -1) {
-        cb(data.cmps, elementIdx)
-        return
+        cb(data.cmps, elementIdx);
+        return;
     } else {
         data.cmps.forEach(cmp => findTarget(cmp, elementId, cb));
     }
@@ -117,20 +111,17 @@ function findTarget(data, elementId, cb) {
 
 // Return the right units for the given style setting
 function getScaleUnits(style) {
-    const pxFields = [
-        'fontSize', 'letterSpacing', 'lineHeight',
-        'paddingBlock', 'paddingInline', 'borderRadius', 'width', 'height'];
-    const percentFields = []
-    const styleCopy = JSON.parse(JSON.stringify(style))
+    const pxFields = ['fontSize', 'letterSpacing', 'lineHeight', 'paddingBlock', 'paddingInline', 'borderRadius', 'width', 'height'];
+    const styleCopy = JSON.parse(JSON.stringify(style));
+
     for (let attr in styleCopy) {
-        if (pxFields.includes(attr)) styleCopy[attr] = styleCopy[attr] + 'px'
-        else if (percentFields.includes(attr)) styleCopy[attr] = styleCopy[attr] + '%'
+        if (pxFields.includes(attr)) styleCopy[attr] = styleCopy[attr] + 'px';
     }
 
-    return styleCopy
+    return styleCopy;
 }
 
-// Replace the ids of all cmps inside a wap TEMPLATE
+// Replace the ids of all cmps inside a wap template
 function replaceIds(element) {
     if (!element._id) element.id = utilService.getRandomId();
 

@@ -4,13 +4,13 @@ import io from 'socket.io-client';
 const serverPort = 3030;
 const BASE_URL = process.env.NODE_ENV === 'production'
     ? ''
-    : `//localhost:${serverPort}`
+    : `//localhost:${serverPort}`;
 
 
 export const socketService = createSocketService();
 
 
-// socketService.setup(); -> Socket initialization is done from within the necessary component
+// socketService.setup(); -> Socket initialization is done from within the relevant components
 
 
 function createSocketService() {

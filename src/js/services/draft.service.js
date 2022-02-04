@@ -24,6 +24,8 @@ function resetDraft() {
     return loadDraft();
 }
 
+// *** *** *** Private Functions *** *** *** //
+
 function _createDraftWap() {
     const draftWap = {
         name: 'new webApp',

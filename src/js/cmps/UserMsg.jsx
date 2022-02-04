@@ -26,7 +26,7 @@ export function UserMsg() {
     if (!userMsg) return ''
 
     return <ToastContainer
-        style={{ top: 0, zIndex: 1200 }}
+        style={{ zIndex: 1200 }}
         className="toast"
         position="bottom-center"
         autoClose={userMsg.timer}

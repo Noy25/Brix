@@ -26,8 +26,13 @@ export function CollectionPage() {
     const [selectedWapId, setSelectedWapId] = useState('');
 
     useEffect(() => {
-        if (!user) setWaps([]);
+        if (!user) {
+            setWaps([]);
+            return;
+        }
+
         loadWaps();
+
     }, [user])
 
     async function loadWaps() {

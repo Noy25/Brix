@@ -11,12 +11,12 @@ export const routes = [
         component: <HomePage />,
     },
     {
-        path: '/editor',
-        component: <EditorPage />,
-    },
-    {
         path: '/templates',
         component: <TemplatesPage />,
+    },
+    {
+        path: '/editor',
+        component: <EditorPage />,
     },
     {
         path: '/collection',

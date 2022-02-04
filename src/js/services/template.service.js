@@ -59,9 +59,6 @@ import { wapTxt_8_2 } from '../templates/txt/wap-txt-8-2';
 import { wapVideo_5 } from '../templates/video/wap-video-5';
 
 
-
-
-
 export const templateService = {
    getSectionsCategories,
    getWapTemplates,
@@ -70,18 +67,10 @@ export const templateService = {
    getTemplateSectionById
 }
 
-const wapTemplates = [
-   wapTemplate_7,
-   wapTemplate_3,
-   wapTemplate_6,
-   wapTemplate_4,
-   wapTemplate_8,
-   wapTemplate_2,
-   wapTemplate_1,
-   wapTemplate_5,
-]
 
-const sectionsCategories = ['wap-header', 'wap-hero', 'wap-section', 'wap-text', 'wap-card', 'wap-gallery', 'wap-form', 'wap-video', 'wap-footer'] // wap-map,
+const wapTemplates = [wapTemplate_7, wapTemplate_3, wapTemplate_6, wapTemplate_4, wapTemplate_8, wapTemplate_2, wapTemplate_1, wapTemplate_5,];
+
+const sectionsCategories = ['wap-header', 'wap-hero', 'wap-section', 'wap-text', 'wap-card', 'wap-gallery', 'wap-form', 'wap-video', 'wap-footer']; // ,'wap-map'
 
 const templateSections = [
    // Cards

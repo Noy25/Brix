@@ -19,18 +19,18 @@ export const asyncStorageService = {
 // User's saved waps. This will be wap collection in wap_db later.
 const ENTITY_STORAGE_KEY = 'wap';
 
-// ==============================================================
-// This is a demo server with its' service combined into one file 
-// ==============================================================
+// ============================================================== //
+// This is a demo server with its' service combined into one file //
+// ============================================================== //
 
 // entityStorageKey is the localStorage key (ENTITY_STORAGE_KEY), we pass it inside wapService as if it was the url of the server in an ajax request.
 
 
 // Get entities
 function query(entityStorageKey, delay = 1000) {
-    // Option 1 - always get some sort of entites
+    // Option 1 - if no entities, always get some sort of entites :
     const entities = _loadEntitiesFromStorage(entityStorageKey) || _createEntities();
-    // Option 2 - get an empty array
+    // Option 2 - if no entities, get an empty array :
     // const entities = _loadEntitiesFromStorage(entityStorageKey) || [];
     return new Promise(resolve => setTimeout(() => resolve(entities), delay));
 }
@@ -69,8 +69,7 @@ async function put(entityStorageKey, updatedEntity) {
     return updatedEntity;
 }
 
-
-// *** *** *** PRIVATE FUNCTIONS *** *** *** //
+// *** *** *** Private Functions *** *** *** //
 
 // For demo-data purposes only. If user didn't create any waps yet, this will be his collection.
 function _createEntities() {

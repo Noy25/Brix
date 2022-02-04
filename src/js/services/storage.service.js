@@ -8,7 +8,7 @@ export const storageService = {
 }
 
 
-// *** LOCAL Storage *** //
+// *** Local Storage *** //
 
 function saveToStorage(key, val) {
     localStorage.setItem(key, JSON.stringify(val));
@@ -24,7 +24,7 @@ function removeFromStorage(key) {
 }
 
 
-// *** SESSION Storage *** //
+// *** Session Storage *** //
 
 function saveToSession(key, val) {
     sessionStorage.setItem(key, JSON.stringify(val))
