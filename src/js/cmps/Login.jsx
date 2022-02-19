@@ -110,12 +110,12 @@ export function Login() {
 
                 <GoogleLogin className="google-login"
                     clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+                    theme="dark"
                     buttonText="Continue with Google"
                     onSuccess={handleGoogleLogin}
                     onFailure={handleGoogleFailure}
-                    cookiePolicy="single_host_origin">
-
-                </GoogleLogin>
+                    cookiePolicy="single_host_origin"
+                    prompt="consent" />
 
                 {/* <div className="facebook-login flex align-center">
                     <div className="icon flex justify-center align-center"><FaFacebookF /></div>
