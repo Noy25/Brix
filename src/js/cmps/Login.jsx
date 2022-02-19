@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import GoogleLogin from 'react-google-login';
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 // Actions
 import { onSignup, onLogin } from '../store/user.action';
 import { shouldShowLogin } from '../store/system.action';
@@ -24,6 +25,15 @@ export function Login() {
         inputRef.current.focus();
     }, [])
 
+    const setSignup = (ev) => {
+        ev.stopPropagation();
+        setIsLogin(false)
+    }
+
+    const setLogin = (ev) => {
+        ev.stopPropagation();
+        setIsLogin(true);
+    }
 
     const handleChange = ({ target }) => {
         const { name, value } = target;
@@ -61,18 +71,23 @@ export function Login() {
         dispatch(shouldShowLogin(false));
     }
 
-    const handleGoogleFailure = res => {
+    const handleGoogleLoginFailure = err => {
+        console.log(err);
+    }
+
+    const handleFacebookLogin = (res) => {
         console.log(res);
+        const facebookCredentials = {
+            username: res.email,
+            password: '123', // fictive password for backend auth
+            nickname: res.name.split(' ')[0]
+        }
+        dispatch(onSignup(facebookCredentials));
+        dispatch(shouldShowLogin(false));
     }
 
-    const setSignup = (ev) => {
-        ev.stopPropagation();
-        setIsLogin(false)
-    }
-
-    const setLogin = (ev) => {
-        ev.stopPropagation();
-        setIsLogin(true);
+    const handleFacebookLoginFailure = err => {
+        console.log(err);
     }
 
 
@@ -113,14 +128,22 @@ export function Login() {
                     theme="dark"
                     buttonText="Continue with Google"
                     onSuccess={handleGoogleLogin}
-                    onFailure={handleGoogleFailure}
+                    onFailure={handleGoogleLoginFailure}
                     cookiePolicy="single_host_origin"
                     prompt="consent" />
 
-                {/* <div className="facebook-login flex align-center">
-                    <div className="icon flex justify-center align-center"><FaFacebookF /></div>
-                    <button>Continue with Facebook</button>
-                </div> */}
+                <FacebookLogin
+                    appId={process.env.REACT_APP_FACEBOOK_APP_ID}
+                    fields="name,email,picture"
+                    callback={handleFacebookLogin}
+                    onFailure={handleFacebookLoginFailure}
+                    render={renderProps => (
+                        <div className="facebook-login flex align-center" onClick={renderProps.onClick}>
+                            <div className="icon flex justify-center align-center"><FaFacebookF /></div>
+                            <button>Continue with Facebook</button>
+                        </div>
+                    )} />
+
 
                 {isLogin && <p>Don't have an account yet? <span onClick={setSignup}>Sign up</span></p>}
                 {!isLogin && <p>Already have an account? <span onClick={setLogin}>Login</span></p>}
