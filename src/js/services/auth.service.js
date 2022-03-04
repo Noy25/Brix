@@ -6,7 +6,7 @@ import { asyncStorageService } from './async-storage.service';
 import { httpService } from './http.service';
 
 
-export const userService = {
+export const authService = {
     login,
     logout,
     signup,

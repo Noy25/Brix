@@ -1,8 +1,8 @@
-import { userService } from '../services/user.service.js';
+import { authService } from '../services/auth.service.js';
 
 
 const initialState = {
-    user: userService.getLoggedinUser(),
+    user: authService.getLoggedinUser(),
     userMsg: null
 }
 

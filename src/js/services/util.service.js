@@ -14,7 +14,7 @@ function getRandomId(length = 10, array) {
     return id;
 }
 
-function debounce(func, timeout = 1.5) {
+function debounce(func, timeout = 1000) {
     let timer;
     return (...args) => {
         clearTimeout(timer);

@@ -6,6 +6,8 @@ import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props
 // Actions
 import { onSignup, onLogin } from '../store/user.action';
 import { shouldShowLogin } from '../store/system.action';
+// Services
+import { utilService } from '../services/util.service';
 // Cmps
 import { Screen } from './Screen';
 // Assets
@@ -24,6 +26,10 @@ export function Login() {
     useEffect(() => {
         inputRef.current.focus();
     }, [])
+
+    useEffect(() => {
+        checkAvailability();
+    }, [credentials.username])
 
     const setSignup = (ev) => {
         ev.stopPropagation();
@@ -48,14 +54,9 @@ export function Login() {
             if (isLogin) {
                 delete credentials.nickname;
                 dispatch(onLogin(credentials));
-            }
-            //  Signup
-            if (!isLogin) {
+            } else { //  Signup
                 dispatch(onSignup(credentials));
             }
-
-            setCredentials({ username: '', password: '', nickname: '' });
-            dispatch(shouldShowLogin(false));
         } catch (err) {
             console.log(err);
         }
@@ -90,6 +91,11 @@ export function Login() {
         console.log(err);
     }
 
+    const checkAvailability = () => {
+        // utilService.debounce
+        console.log(credentials.username);
+    }
+
 
     return (
         // screen gets a callback function to hide itself
@@ -106,7 +112,7 @@ export function Login() {
 
                     <div className="wrapper flex column">
                         <label htmlFor="username">Username / Email</label>
-                        <input type="text" ref={inputRef} id="username" name="username" value={credentials.username} onChange={handleChange} placeholder="Enter your username / email" required />
+                        <input type="text" ref={inputRef} id="username" name="username" value={credentials.username} onChange={handleChange} placeholder="e.g. user123 / user123@gmail.com" required />
                     </div>
 
                     <div className="wrapper flex column">
