@@ -11,6 +11,8 @@ export const authService = {
     logout,
     signup,
     getLoggedinUser,
+    checkCredentials,
+    checkIsAvailable
 }
 
 
@@ -60,6 +62,29 @@ function getLoggedinUser() {
 
     // Backend : ?
     // Could get user from cookies
+}
+
+function checkCredentials({ username, password, nickname }) {
+    const regex = {
+        username: /^[a-z][a-z\d]{3,15}/,
+        email: /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/,
+        password: /\w{6,18}/,
+        nickname: /^[a-zA-Z]\w{3,20}/
+    }
+    console.log(regex.username.test(username));
+    console.log(regex.password.test(password));
+    console.log(regex.nickname.test(nickname));
+}
+
+async function checkIsAvailable(username) {
+    // Frontend Demo :
+    // const users = await asyncStorageService.query(USER_STORAGE_KEY);
+    // const user = users.find(user => user.username === username);
+    // return !user;
+
+    // Backend :
+    const isAvailable = await httpService.post('auth/username', { username });
+    return isAvailable;
 }
 
 // *** *** *** Private Functions *** *** *** //

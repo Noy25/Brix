@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 import { wapReducer } from './wap.reducer.js';
 import { editorReducer } from './editor.reducer.js';
 import { systemReducer } from './system.reducer.js';
-import { userReducer } from './user.reducer.js';
+import { userReducer } from './auth.reducer.js';
 
 
 const rootReducer = combineReducers({

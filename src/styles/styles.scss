@@ -8,7 +8,6 @@
 @import "./basics/helpers";
 @import "./basics/animations";
 
-
 // *** Pages ***
 // Home
 @import "./pages/home-page/home-page";
@@ -34,7 +33,6 @@
 // Publish
 @import "./pages/publish-page/publish-page";
 
-
 // *** CMPS ***
 @import "./cmps/app-header";
 @import "./cmps/app-footer";
@@ -42,8 +40,6 @@
 @import "./cmps/login";
 @import "./cmps/_wap-building-loader";
 @import "./cmps/_user-modal";
-
-
 
 // *** Templates ***
 // Cards
@@ -100,3 +96,6 @@
 @import "./templates/form/wap-form-3";
 @import "./templates/form/wap-form-5";
 @import "./templates/form/wap-form-6";
+
+// *** Loaders ***
+@import "loaders.css/src/animations/ball-pulse.scss";

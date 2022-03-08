@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { NavLink, useLocation } from 'react-router-dom';
 // Actions
 import { shouldShowLogin } from '../store/system.action';
-import { onLogout } from '../store/user.action';
+import { onLogout } from '../store/auth.action';
 // Cmps
 import { SavePublishBtns } from '../pages/editor-page/cmps/SavePublishBtns';
 import { MobileHamburger } from './MobileHamburger';

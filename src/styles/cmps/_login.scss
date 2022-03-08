@@ -49,6 +49,12 @@
 
         .wrapper {
             gap: 10px;
+            label {
+                gap: 10px;
+                svg {
+                    cursor: help;
+                }
+            }
         }
 
         input {

@@ -6,7 +6,7 @@ import { createJpegFromElement } from '../../../services/cloudinary.service';
 // Actions
 import { saveWap } from '../../../store/wap.action';
 import { setCurrElement } from '../../../store/editor.action';
-import { setUserMsg } from '../../../store/user.action';
+import { setUserMsg } from '../../../store/auth.action';
 import { shouldShowLogin, shouldShowUserModal } from '../../../store/system.action';
 // Cmps
 import { WapBuildingLoader } from '../../../cmps/WapBuildingLoader';

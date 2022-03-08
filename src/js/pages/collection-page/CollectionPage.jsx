@@ -7,7 +7,7 @@ import { wapService } from '../../services/wap.service';
 // Actions
 import { loadWap } from '../../store/wap.action';
 import { shouldShowUserModal } from '../../store/system.action';
-import { setUserMsg } from '../../store/user.action';
+import { setUserMsg } from '../../store/auth.action';
 // Cmps
 import { UserModal } from '../../cmps/UserModal';
 import { Loader } from '../../cmps/Loader'
