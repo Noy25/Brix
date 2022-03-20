@@ -75,6 +75,7 @@ export function AppHeader() {
             </Link>
 
             <nav className="nav-menu flex align-center">
+                <NavLink className="nav-link" to="/"> HOME</NavLink>
                 <NavLink className="nav-link" to="/templates"> TEMPLATES</NavLink>
                 <NavLink className="nav-link" to="/editor"> EDITOR</NavLink>
                 <NavLink className="nav-link" to="/collection"> COLLECTION</NavLink>

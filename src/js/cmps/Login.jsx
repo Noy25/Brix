@@ -13,7 +13,7 @@ import { utilService } from '../services/util.service';
 import { Screen } from './Screen';
 // Assets
 import userProfile from '../../assets/imgs/user.png';
-import { FaFacebookF, FaInfoCircle } from 'react-icons/fa';
+import { FaFacebookF, FaInfoCircle, FaRegCheckCircle, FaEye, FaEyeSlash, FaExclamationTriangle } from 'react-icons/fa';
 import Loader from 'react-loaders';
 
 
@@ -22,10 +22,13 @@ export function Login() {
     const dispatch = useDispatch();
     const inputRef = useRef();
 
-    const [isLogin, setIsLogin] = useState(true);
     const [credentials, setCredentials] = useState({ username: '', password: '', confirmPassword: '', nickname: '' });
+    const [isLogin, setIsLogin] = useState(true);
     const [isLoading, setIsLoading] = useState(false);
     const [isUsernameAvailable, setIsUsernameAvailable] = useState('');
+    const [formErrors, setFormErrors] = useState({});
+    const [shouldShowPassword, setShouldShowPassword] = useState(false);
+    const [isSubmitted, setIsSubmitted] = useState(false);
 
     useEffect(() => {
         inputRef.current.focus();
@@ -33,10 +36,24 @@ export function Login() {
 
     useEffect(() => {
         if (!isLogin) {
-            if (!credentials.username) return setIsUsernameAvailable('');
+            setIsUsernameAvailable('');
+
+            if (credentials.username.length < 4) {
+                setIsLoading(false);
+                return;
+            }
+
+            setIsLoading(true);
             checkAvailability(credentials.username);
         }
     }, [credentials.username])
+
+    useEffect(() => {
+        if (isSubmitted) {
+            if ((isUsernameAvailable === 'yes') && (!formErrors.username && !formErrors.password && !formErrors.nickname)) dispatch(onSignup(credentials));
+            else setIsSubmitted(false);
+        }
+    }, [isSubmitted])
 
     const setSignup = (ev) => {
         ev.stopPropagation();
@@ -62,8 +79,8 @@ export function Login() {
                 delete credentials.nickname;
                 dispatch(onLogin(credentials));
             } else { //  Signup
-                const testResults = authService.checkCredentials(credentials);
-                dispatch(onSignup(credentials));
+                setFormErrors(authService.validateForm(credentials));
+                setIsSubmitted(true);
             }
         } catch (err) {
             console.log(err);
@@ -100,8 +117,6 @@ export function Login() {
     }
 
     const checkAvailability = useCallback(utilService.debounce(async (username) => {
-        setIsUsernameAvailable('');
-        setIsLoading(true);
         const isAvailable = await authService.checkIsAvailable(username);
         setIsLoading(false);
         isAvailable ? setIsUsernameAvailable('yes') : setIsUsernameAvailable('no');
@@ -119,28 +134,36 @@ export function Login() {
 
                 <form className="flex column" onSubmit={handleSubmit}>
 
-                    <div className="wrapper flex column">
+                    <div className="field flex column">
                         <label htmlFor="username" className="flex align-center">Username / Email {!isLogin && <FaInfoCircle title="Will be used to log in" />}</label>
-                        <input type="text" ref={inputRef} id="username" name="username" value={credentials.username} onChange={handleChange} placeholder="e.g. user123 / user123@gmail.com" required />
+                        <input type="text" ref={inputRef} id="username" name="username" value={credentials.username} onChange={handleChange} placeholder={isLogin ? "Please enter your username" : "example123 / example@gmail.com"} required />
                         {isLoading && <Loader type="ball-pulse" />}
-                        {isUsernameAvailable && <p>{isUsernameAvailable === 'yes'
-                            ? `${credentials.username} is available.`
-                            : `Sorry, ${credentials.username} is already taken`}</p>}
+                        {isUsernameAvailable !== '' &&
+                            <p className="username-available flex align-center">
+                                {isUsernameAvailable === 'yes'
+                                    ? <>{`${credentials.username} is available`} <FaRegCheckCircle color="#69e353" /></>
+                                    : <>{`Sorry, ${credentials.username} is already taken`} <FaExclamationTriangle color="#ebbb35" /></>}
+                            </p>}
+                        <p className="form-error">{formErrors.username}</p>
                     </div>
 
-                    <div className="wrapper flex column">
+                    <div className="field flex column">
                         <label htmlFor="password" className="flex align-center">Password {!isLogin && <FaInfoCircle title="Should be at least 6 characters long" />}</label>
-                        <input type="password" id="password" name="password" value={credentials.password} onChange={handleChange} placeholder="Enter your password" required />
+                        <input type={shouldShowPassword ? "text" : "password"} id="password" name="password" value={credentials.password} onChange={handleChange} placeholder="Please enter your password" required />
+                        <div className="icon-eye" onClick={() => setShouldShowPassword(!shouldShowPassword)} title="Show/unshow password">{shouldShowPassword ? <FaEyeSlash /> : <FaEye />}</div>
+                        <p className="form-error">{formErrors.password}</p>
                     </div>
 
-                    {!isLogin && <div className="wrapper flex column">
+                    {!isLogin && <div className="field flex column">
                         <label htmlFor="confirmPassword" className="flex align-center">Confirm Password <FaInfoCircle title="Should match the password above" /></label>
-                        <input type="password" id="confirmPassword" name="confirmPassword" value={credentials.confirmPassword} onChange={handleChange} placeholder="Confirm your password" required />
+                        <input type={shouldShowPassword ? "text" : "password"} id="confirmPassword" name="confirmPassword" value={credentials.confirmPassword} onChange={handleChange} placeholder="Confirm your password" required />
+                        <div className="icon-eye" onClick={() => setShouldShowPassword(!shouldShowPassword)} title="Show/unshow password">{shouldShowPassword ? <FaEyeSlash /> : <FaEye />}</div>
                     </div>}
 
-                    {!isLogin && <div className="wrapper flex column">
+                    {!isLogin && <div className="field flex column">
                         <label htmlFor="nickname" className="flex align-center">Nickname <FaInfoCircle title="Will be displayed to everyone else" /></label>
-                        <input type="text" id="nickname" name="nickname" value={credentials.nickname} onChange={handleChange} placeholder="Enter nickname" required />
+                        <input type="text" id="nickname" name="nickname" value={credentials.nickname} onChange={handleChange} placeholder="Please enter a nickname" required />
+                        <p className="form-error">{formErrors.nickname}</p>
                     </div>}
 
                     <button className="align-self-start">{isLogin ? 'Sign in' : 'Sign up'}</button>

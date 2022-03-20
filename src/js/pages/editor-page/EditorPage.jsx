@@ -27,6 +27,7 @@ export function EditorPage() {
       dispatch(loadDraftWap());
 
       // Socket initialization on connection happens inside Cursors.jsx component
+      
       // User joined via share link :
       if (wapId) {
          dispatch(joinRoom(wapId));

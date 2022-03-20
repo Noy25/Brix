@@ -1,13 +1,13 @@
 .cards {
-    min-height: 100vh;
     color: white;
     margin-bottom: 199px;
 
     .card-container {
         width: 100%;
-        height: 100vh;
+        min-height: 70vh;
         padding: 50px 7%;
         transform: skewY(-11deg);
+        justify-content: space-around;
 
         @include for-mobile-layout {
             height: unset;
@@ -27,7 +27,7 @@
             background-color: $color1;
             color: $color3;
         }
-        
+
         &:nth-child(3) {
             padding: 0;
 
@@ -36,7 +36,8 @@
                 background-color: #383838;
                 transform: skewY(21deg);
                 gap: 0;
-                height: 100vh;
+                min-height: 70vh;
+                justify-content: space-around;
 
                 .other-diagonal {
                     flex-basis: unset;
@@ -83,6 +84,7 @@
     }
 }
 
+// CTA BUTTON :
 .cards button {
     position: relative;
     display: inline-block;

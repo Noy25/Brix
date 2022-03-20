@@ -19,7 +19,7 @@ export function Cards() {
 
     return <section className="cards">
 
-        <div className="card-container flex">
+        <div className="card-container flex justify-between">
             <div className="content-container flex align-center">
                 <div className="card-text flex column" data-aos="slide-right">
                     <h1>Simple</h1>

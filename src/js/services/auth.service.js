@@ -11,8 +11,8 @@ export const authService = {
     logout,
     signup,
     getLoggedinUser,
-    checkCredentials,
-    checkIsAvailable
+    checkIsAvailable,
+    validateForm
 }
 
 
@@ -64,18 +64,6 @@ function getLoggedinUser() {
     // Could get user from cookies
 }
 
-function checkCredentials({ username, password, nickname }) {
-    const regex = {
-        username: /^[a-z][a-z\d]{3,15}/,
-        email: /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/,
-        password: /\w{6,18}/,
-        nickname: /^[a-zA-Z]\w{3,20}/
-    }
-    console.log(regex.username.test(username));
-    console.log(regex.password.test(password));
-    console.log(regex.nickname.test(nickname));
-}
-
 async function checkIsAvailable(username) {
     // Frontend Demo :
     // const users = await asyncStorageService.query(USER_STORAGE_KEY);
@@ -84,10 +72,59 @@ async function checkIsAvailable(username) {
 
     // Backend :
     const isAvailable = await httpService.post('auth/username', { username });
-    return isAvailable;
+    return new Promise(resolve => setTimeout(() => resolve(isAvailable), 1000));
 }
 
+function validateForm({ username, password, confirmPassword, nickname }) {
+    const formErrors = {};
+
+    formErrors.username = _validateUsername(username);
+    formErrors.password = _validatePassword(password, confirmPassword);
+    formErrors.nickname = _validateNickname(nickname);
+
+    return formErrors;
+}
+
+
 // *** *** *** Private Functions *** *** *** //
+
+function _validateUsername(username) {
+    const usernameRegex = /^[a-z][a-z\d]{3,15}$/;
+    const emailRegex = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
+
+    if (!username.includes('@')) {
+        const res = usernameRegex.test(username);
+        if (!res) {
+            if (/[A-Z]/.test(username)) return '*Please provide small letters only.'
+            if (!/[a-z]/.test(username.charAt(0))) return '*First character must be a letter.';
+            if (username.length < 4) return '*Username must be at least 4 characters long.';
+            if (username.length > 16) return '*Username must be less than 16 characters long.';
+        }
+    } else {
+        const res = emailRegex.test(username);
+        if (!res) return '*Please provide a valid email format.';
+    }
+}
+
+function _validatePassword(password, confirmPassword) {
+    const passwordRegex = /^\w{6,18}$/;
+    const res = passwordRegex.test(password);
+    if (!res) {
+        if (password.length < 6) return '*Password should be at least 6 characters long.';
+        if (password.length > 18) return '*Password should no more than 18 characters long.';
+    }
+    if (password !== confirmPassword) return '*Your passwords do not match.';
+}
+
+function _validateNickname(nickname) {
+    const nicknameRegex = /^[a-zA-Z]\w{3,20}$/;
+    const res = nicknameRegex.test(nickname);
+    if (!res) {
+        if (!/[a-zA-Z]/.test(nickname.charAt(0))) return '*First character must be a letter.';
+        if (nickname.length < 4) return '*Nickname should be at least 6 characters long.';
+        if (nickname.length > 20) return '*Nickname should no more than 20 characters long.';
+    }
+}
 
 function _setUserSession(user) {
     storageService.saveToSession(LOGGEDIN_USER_STORAGE_KEY, user);
