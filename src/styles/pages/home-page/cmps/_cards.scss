@@ -1,6 +1,5 @@
 .cards {
     color: white;
-    margin-bottom: 199px;
 
     .card-container {
         width: 100%;
@@ -62,6 +61,12 @@
 
             @include for-mobile-layout {
                 flex-direction: column;
+            }
+
+            &:nth-child(2) {
+                @include for-mobile-layout {
+                    flex-direction: column-reverse;
+                }
             }
 
             & > * {

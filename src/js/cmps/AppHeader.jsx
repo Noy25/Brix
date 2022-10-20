@@ -88,9 +88,9 @@ export function AppHeader() {
             {user &&
                 <div className="greet-user flex align-center">
                     <p>Hello {user.nickname}</p>
-                    <div className="user-icon-container flex align-center" onClick={() => { dispatch(onLogout()) }}>
+                    <div className="user-icon-container flex align-center" onClick={() => { dispatch(onLogout()) }} title="Logout">
                         {/* <FaUser /> */}
-                        <MdLogout title="Logout" style={{ fontSize: "1.2rem" }} />
+                        <MdLogout style={{ fontSize: "1.2rem" }} />
                     </div>
                 </div>}
 

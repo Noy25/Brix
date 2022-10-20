@@ -125,6 +125,12 @@ export function EditAccordion() {
             {(!currElement) && <p style={{ padding: '20px', marginTop: '50px', textAlign: 'center' }}>Choose an Item</p>}
 
             {currElement && <>
+                <div className='other-action-container flex'>
+                    <button onClick={onRemoveElement} title="Remove"><FcDeleteRow /></button>
+                    <button onClick={onDuplicateElement} title="Duplicate"><IoDuplicateSharp /></button>
+                    <button onClick={onUndo} title="Undo"><FaUndoAlt /></button>
+                </div>
+
                 {(currElement.type === 'txt' || currElement.type === 'btn' || currElement.type === 'input') &&
                     <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
                         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
@@ -195,12 +201,6 @@ export function EditAccordion() {
                         </AccordionDetails>
                     </Accordion>}
             </>}
-
-            <div className='other-action-container flex'>
-                <button onClick={onRemoveElement}><FcDeleteRow /></button>
-                <button onClick={onDuplicateElement}><IoDuplicateSharp /></button>
-                <button onClick={onUndo}><FaUndoAlt /></button>
-            </div>
         </div >
     );
 }

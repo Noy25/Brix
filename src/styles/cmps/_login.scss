@@ -13,6 +13,8 @@
     border-radius: 10px;
     cursor: default;
 
+    animation: to-bottom 300ms ease-out;
+
     @include for-mobile-layout {
         width: 350px;
         padding: 2rem;
@@ -74,6 +76,7 @@
             }
             .form-error {
                 color: #ff3e3e;
+                font-weight: 500;
             }
             .icon-eye {
                 position: absolute;
@@ -195,5 +198,16 @@
         &:hover {
             text-decoration: none;
         }
+    }
+}
+
+@keyframes to-bottom {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
     }
 }
