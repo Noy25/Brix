@@ -4,12 +4,25 @@
     left: 50%;
     transform: translate(-50%, -50%);
 
-    width: 300px;
-    padding: 2rem;
+    width: 400px;
+    padding: 2rem 3rem;
+
     background-color: $color3;
     color: $color1;
+    box-shadow: 0px 0px 8px 2px #0000006e;
     border-radius: 10px;
     cursor: default;
+
+    animation: to-bottom 300ms ease-out;
+
+    @include for-mobile-layout {
+        width: 350px;
+        padding: 2rem;
+    }
+
+    @media (max-width: 400px) {
+        width: 300px;
+    }
 
     i {
         width: 30px;
@@ -46,13 +59,60 @@
     form {
         gap: 25px;
 
-        .wrapper {
+        .field {
             gap: 10px;
+            position: relative;
+
+            label {
+                gap: 10px;
+                svg {
+                    cursor: help;
+                    opacity: 0;
+                    transition: opacity 0.2s;
+                }
+            }
+            .username-available {
+                gap: 5px;
+            }
+            .form-error {
+                color: #ff3e3e;
+                font-weight: 500;
+            }
+            .icon-eye {
+                position: absolute;
+                top: 0;
+                right: 0;
+                opacity: 0;
+                cursor: pointer;
+                transition: opacity 0.2s;
+            }
+
+            &:hover {
+                label svg {
+                    opacity: 1;
+                }
+                .icon-eye {
+                    opacity: 1;
+                }
+            }
+
+            @include for-tablet-layout {
+                label svg {
+                    opacity: 1;
+                }
+                .icon-eye {
+                    opacity: 1;
+                }
+            }
         }
 
         input {
             padding: 10px;
             border-radius: 3px;
+            transition: 0.3s;
+            &:focus {
+                box-shadow: 0 0 8px 2px #5276b9;
+            }
         }
 
         button {
@@ -65,19 +125,22 @@
 
     .google-login {
         width: 100%;
-        margin: 25px auto;
+        margin: 25px auto 0;
         display: flex;
         border: none !important;
         border-top-right-radius: 3px !important;
         border-bottom-right-radius: 3px !important;
-        
+
         & > div {
             margin-right: 0 !important;
-            padding: 8px !important;
             border-top-left-radius: 3px !important;
             border-bottom-left-radius: 3px !important;
+            border-top-right-radius: 0 !important;
+            border-bottom-right-radius: 0 !important;
+            display: grid;
+            place-content: center;
         }
-        
+
         & > span {
             display: block;
             flex-grow: 1;
@@ -86,6 +149,44 @@
             color: white;
             border-top-right-radius: 3px !important;
             border-bottom-right-radius: 3px !important;
+            font-family: $main-font;
+        }
+
+        &:hover {
+            opacity: 1 !important;
+            cursor: pointer;
+            filter: brightness(1.1);
+        }
+    }
+
+    .facebook-login {
+        border: 1px solid #3b5998;
+        color: #3b5998;
+        width: 100%;
+        margin: 25px auto;
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+
+        .icon {
+            width: 38px;
+            height: 38px;
+            background: #fff;
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+        }
+
+        button {
+            flex-grow: 1;
+            padding: 10px;
+            color: white;
+            background-color: #3b5998;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        &:hover {
+            cursor: pointer;
+            filter: brightness(1.1);
         }
     }
 
@@ -97,5 +198,16 @@
         &:hover {
             text-decoration: none;
         }
+    }
+}
+
+@keyframes to-bottom {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
     }
 }

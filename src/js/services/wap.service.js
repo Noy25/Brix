@@ -57,7 +57,7 @@ async function remove(wapId) {
     try {
         await httpService.delete(`wap/${wapId}`);
     } catch (err) {
-        throw err;
+        console.log(err);
     }
 }
 

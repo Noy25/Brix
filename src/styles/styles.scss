@@ -1,23 +1,21 @@
-// Setup
+// *** Setup ***
 @import "./setup/typography";
 @import "./setup/variables";
 @import "./setup/mixins";
 
-// BASICS
-
+// *** Basics ***
 @import "./basics/base";
 @import "./basics/helpers";
 @import "./basics/animations";
 
-// PAGES
-
-// HOME PAGE
+// *** Pages ***
+// Home
 @import "./pages/home-page/home-page";
 @import "./pages/home-page/cmps/hero";
 @import "./pages/home-page/cmps/teaser";
 @import "./pages/home-page/cmps/cards";
 
-// EDITOR PAGE
+// Editor
 @import "./pages/editor-page/editor-page";
 @import "./pages/editor-page/cmps/editor-sidebar";
 @import "./pages/editor-page/cmps/edit-accordion";
@@ -26,17 +24,16 @@
 @import "./pages/editor-page/cmps/wap-actions";
 @import "./pages/editor-page/cmps/save-publish-btns";
 
-//TEMPLATES PAGE
+// Templates
 @import "./pages/templates-page/templates-page";
 
-//COLLECTION PAGE
+// Collection
 @import "./pages/collection-page/collection-page";
 
-//PUBLISH PAGE
+// Publish
 @import "./pages/publish-page/publish-page";
 
-// CMPS
-
+// *** CMPS ***
 @import "./cmps/app-header";
 @import "./cmps/app-footer";
 @import "./cmps/screen";
@@ -44,9 +41,8 @@
 @import "./cmps/_wap-building-loader";
 @import "./cmps/_user-modal";
 
-// TEMPLATES
-
-// CARDS
+// *** Templates ***
+// Cards
 @import "./templates/card/wap-card-1";
 @import "./templates/card/wap-card-1-2";
 @import "./templates/card/wap-card-2";
@@ -56,22 +52,22 @@
 @import "./templates/card/wap-card-7-2";
 @import "./templates/card/wap-card-8";
 
-// FOOTERS
+// Footers
 @import "./templates/footer/wap-footer-1";
 @import "./templates/footer/wap-footer-2";
 @import "./templates/footer/wap-footer-4";
 
-// GALLERY
+// Galleries
 @import "./templates/gallery/wap-gallery-1";
 @import "./templates/gallery/wap-gallery-3";
 
-// HEADERS
+// Headers
 @import "./templates/header/wap-header-1";
 @import "./templates/header/wap-header-2";
 @import "./templates/header/wap-header-7";
 @import "./templates/header/wap-header-8";
 
-// HERO
+// Heros
 @import "./templates/hero/wap-hero-1";
 @import "./templates/hero/wap-hero-2";
 @import "./templates/hero/wap-hero-3";
@@ -81,7 +77,7 @@
 @import "./templates/hero/wap-hero-7";
 @import "./templates/hero/wap-hero-8";
 
-// SECTIONS
+// Sections
 @import "./templates/section/wap-section-4-2";
 @import "./templates/section/wap-section-4-3";
 @import "./templates/section/wap-section-4-4";
@@ -89,14 +85,17 @@
 @import "./templates/section/wap-section-7";
 @import "./templates/section/wap-section-8";
 
-// TXT
+// Texts
 @import "./templates/txt/wap-txt-2";
 @import "./templates/txt/wap-txt-7";
 @import "./templates/txt/wap-txt-8";
 @import "./templates/txt/wap-txt-8-2";
 @import "./templates/txt/wap-txt-5";
 
-//FORM
+// Forms
 @import "./templates/form/wap-form-3";
 @import "./templates/form/wap-form-5";
 @import "./templates/form/wap-form-6";
+
+// *** Loaders ***
+@import "loaders.css/src/animations/ball-pulse.scss";

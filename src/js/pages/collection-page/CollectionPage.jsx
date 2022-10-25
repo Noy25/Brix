@@ -7,7 +7,7 @@ import { wapService } from '../../services/wap.service';
 // Actions
 import { loadWap } from '../../store/wap.action';
 import { shouldShowUserModal } from '../../store/system.action';
-import { setUserMsg } from '../../store/user.action';
+import { setUserMsg } from '../../store/auth.action';
 // Cmps
 import { UserModal } from '../../cmps/UserModal';
 import { Loader } from '../../cmps/Loader'
@@ -53,7 +53,7 @@ export function CollectionPage() {
             dispatch(shouldShowUserModal(false));
             dispatch(setUserMsg({ type: 'success', txt: 'Deleted!', timer: 3000 }));
         } catch (err) {
-
+            console.log(err);
         }
     }
 
@@ -116,7 +116,7 @@ export function CollectionPage() {
 
         {isUserModalShown && <UserModal
             mainTxt={'Are you sure ?'}
-            subTxt={'This action cannot be undone !'}
+            subTxt={'This action cannot be undone!'}
             type={'confirm'}
             btnTxt_1={'Yes'}
             btnTxtCancel={'Cancel'}

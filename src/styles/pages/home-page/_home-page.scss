@@ -1,7 +1,7 @@
 .home{
     display: flex;
     flex-direction: column;
-    overflow-x: clip;
+    overflow: clip;
     
     &:before {
         content: " ";

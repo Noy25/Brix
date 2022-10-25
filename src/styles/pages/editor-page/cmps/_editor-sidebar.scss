@@ -156,11 +156,9 @@
                 }
             }
 
-
-
             .color-input-container {
                 .color-input {
-                    border:1px solid #aeaeae45;
+                    border: 1px solid #aeaeae45;
                     border-radius: 50%;
                     padding: 5px;
                     width: 28px;
@@ -170,21 +168,20 @@
                     left: 0;
                     top: 27px;
                     z-index: 1;
-                    
+
                     svg {
                         color: #a6a6a6;
                         mix-blend-mode: exclusion;
                     }
-                    
                 }
             }
-             
-            &.color-picker{
+
+            &.color-picker {
                 .color-input {
-                top: 4px;
+                    top: 4px;
                 }
             }
-            
+
             &.color-picker,
             .color-picker {
                 flex-direction: column;

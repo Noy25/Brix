@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { useParams } from 'react-router-dom';
 // Actions
-import { setUserMsg } from '../../../store/user.action';
+import { setUserMsg } from '../../../store/auth.action';
 import { createRoom } from '../../../store/wap.action';
 import { setBoardSize } from '../../../store/editor.action';
 // Assets

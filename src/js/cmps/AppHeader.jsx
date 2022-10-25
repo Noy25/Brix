@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { NavLink, useLocation } from 'react-router-dom';
 // Actions
 import { shouldShowLogin } from '../store/system.action';
-import { onLogout } from '../store/user.action';
+import { onLogout } from '../store/auth.action';
 // Cmps
 import { SavePublishBtns } from '../pages/editor-page/cmps/SavePublishBtns';
 import { MobileHamburger } from './MobileHamburger';
@@ -75,6 +75,7 @@ export function AppHeader() {
             </Link>
 
             <nav className="nav-menu flex align-center">
+                <NavLink className="nav-link" to="/"> HOME</NavLink>
                 <NavLink className="nav-link" to="/templates"> TEMPLATES</NavLink>
                 <NavLink className="nav-link" to="/editor"> EDITOR</NavLink>
                 <NavLink className="nav-link" to="/collection"> COLLECTION</NavLink>
@@ -87,9 +88,9 @@ export function AppHeader() {
             {user &&
                 <div className="greet-user flex align-center">
                     <p>Hello {user.nickname}</p>
-                    <div className="user-icon-container flex align-center" onClick={() => { dispatch(onLogout()) }}>
+                    <div className="user-icon-container flex align-center" onClick={() => { dispatch(onLogout()) }} title="Logout">
                         {/* <FaUser /> */}
-                        <MdLogout title="Logout" style={{ fontSize: "1.2rem" }} />
+                        <MdLogout style={{ fontSize: "1.2rem" }} />
                     </div>
                 </div>}
 

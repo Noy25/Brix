@@ -14,10 +14,10 @@ function getRandomId(length = 10, array) {
     return id;
 }
 
-function debounce(func, timeout = 1.5) {
-    let timer;
+function debounce(func, delay = 1000) {
+    let timeoutId;
     return (...args) => {
-        clearTimeout(timer);
-        timer = setTimeout(() => { func.apply(this, args); }, timeout);
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => { func.apply(this, args); }, delay);
     };
 }
